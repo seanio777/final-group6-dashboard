@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import useTheme from '../hooks/useTheme'
 import useTypewriter from '../hooks/useTypewriter'
 
@@ -13,13 +14,14 @@ const navLinks = [
 
 export default function Navbar() {
   const { isDark, toggleTheme } = useTheme()
-
-  // Initialise typewriter + active nav on scroll
   useTypewriter()
 
   return (
     <nav>
-      <div className="logo">MyPortfolio</div>
+      {/* Back to dashboard */}
+      <Link to="/" className="logo" style={{ textDecoration: 'none' }}>
+        ← Dashboard
+      </Link>
 
       <ul>
         {navLinks.map(link => (
