@@ -11,8 +11,8 @@ import { MatrixRain }            from './components/MatrixRain'
 // Manlangit's portfolio uses Tailwind + neon-effects.css
 // Those styles are global and already loaded via the main entry point
 // or can be imported here if kept separate.
-import '../../styles/neon-effects.css'
-import '../../styles/fonts.css'
+import '/src/manlangit/styles/neon-effects.css'
+import '/src/manlangit/styles/fonts.css'
 
 export default function Manlangit() {
   return (
