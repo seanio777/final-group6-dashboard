@@ -3,7 +3,7 @@ export default function Hero() {
     <header id="home" className="bg">
       <div className="hero">
         <img
-          src="/profile.jpg"
+          src="/profile-suing.jpg"
           alt="Profile Picture"
           className="profile-img"
           onError={e => { e.target.style.display = 'none' }}
