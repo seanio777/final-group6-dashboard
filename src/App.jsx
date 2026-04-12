@@ -19,7 +19,7 @@ const members = [
     tagline: '"The best way to predict the future is to invent it."',
     photo: '/suing.jpg',
     alt: 'Chryzller',
-    href: '#', // ← Replace with Chryzller's portfolio URL when available
+    href: 'https://portfolio-s-gamma.vercel.app/', 
   },
   {
     id: '03',
