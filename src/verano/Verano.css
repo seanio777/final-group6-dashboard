@@ -1,8 +1,3 @@
-/* ── Verano Portfolio Styles ─────────────────────────────────
-   All rules are scoped under .verano-root to prevent
-   conflicts with Dashboard.css and Suing.css
-   ─────────────────────────────────────────────────────────── */
- 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap');
  
 /* ── CSS Variables scoped to Verano's portfolio ── */
@@ -31,4 +26,929 @@
   overflow-x: hidden;
   cursor: none;
   min-height: 100vh;
+
+    html {
+    scroll-behavior: smooth;
+    }
+
+    body {
+    background-color: var(--blue-deep);
+    color: var(--white);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    cursor: none;
+    }
+
+    /* Custom cursor */
+    .cursor {
+    width: 10px;
+    height: 10px;
+    background: var(--cyan-accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+    box-shadow: 0 0 10px var(--cyan-accent), 0 0 20px var(--cyan-accent);
+    }
+
+    .cursor-follower {
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--blue-bright);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.15s ease;
+    opacity: 0.6;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+    width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+    background: var(--blue-dark);
+    }
+    ::-webkit-scrollbar-thumb {
+    background: var(--blue-glow);
+    border-radius: 2px;
+    }
+
+    /* Global section styles */
+    section {
+    padding: 100px 0;
+    position: relative;
+    }
+
+    .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    }
+
+    .section-label {
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    color: var(--cyan-accent);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    }
+
+    .section-label::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--cyan-accent);
+    }
+
+    .section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 60px;
+    }
+
+    .section-title span {
+    color: var(--blue-bright);
+    }
+
+    /* Grid background */
+    .grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(30, 91, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 91, 255, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    }
+
+    /* Glow orb */
+    .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    }
+
+    /* Card style */
+    .card {
+    background: var(--blue-card);
+    border: 1px solid var(--blue-border);
+    border-radius: 12px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue-bright), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+    border-color: var(--blue-bright);
+    transform: translateY(-4px);
+    }
+
+    .card:hover::before {
+    opacity: 1;
+    }
+
+    /* Buttons */
+    .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--blue-glow), var(--blue-bright));
+    color: white;
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border: none;
+    cursor: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    }
+
+    .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    }
+
+    .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(30, 91, 255, 0.5);
+    }
+
+    .btn-primary:hover::after {
+    opacity: 1;
+    }
+
+    .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--blue-light);
+    padding: 13px 32px;
+    border-radius: 6px;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border: 1px solid var(--blue-border);
+    cursor: none;
+    transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+    border-color: var(--blue-bright);
+    background: rgba(59, 130, 246, 0.08);
+    transform: translateY(-2px);
+    }
+
+    /* Tag */
+    .tag {
+    display: inline-block;
+    background: rgba(30, 91, 255, 0.12);
+    border: 1px solid rgba(30, 91, 255, 0.3);
+    color: var(--blue-light);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-family: var(--font-display);
+    letter-spacing: 0.05em;
+    }
+
+    /* Divider */
+    .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue-border), transparent);
+    margin: 0;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(30, 91, 255, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(30, 91, 255, 0.7), 0 0 80px rgba(0, 212, 255, 0.2); }
+    }
+
+    @keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+    }
+
+    @keyframes glitch {
+    0%, 95%, 100% { transform: translateX(0); clip-path: none; }
+    96% { transform: translateX(-2px); }
+    98% { transform: translateX(2px); }
+    }
+
+    .animate-fade-up {
+    animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .animate-fade-left {
+    animation: fadeInLeft 0.8s ease forwards;
+    }
+
+    /* ============================================================
+    RESPONSIVE STYLES — paste at the bottom of App.css
+    ============================================================ */
+
+    /* ── Small Laptops / Large Tablets (≤1024px) ── */
+    @media (max-width: 1024px) {
+    .container {
+        padding: 0 28px;
+    }
+
+    section {
+        padding: 80px 0;
+    }
+
+    /* Hero: shrink photo */
+    #hero .container {
+        gap: 48px;
+    }
+
+    #hero .container > div:last-child > div[style] {
+        width: 260px !important;
+        height: 320px !important;
+    }
+
+    /* Objective two-col → tighter */
+    #objective .container > div {
+        gap: 48px;
+    }
+
+    /* Contact two-col → tighter */
+    #contact .container > div[style*="grid"] {
+        gap: 40px;
+    }
+    }
+
+    /* ── Tablets (≤768px) ── */
+    @media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    section {
+        padding: 64px 0;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+    }
+
+    /* ── Navbar ── */
+    nav .desktop-nav {
+        display: none !important;
+    }
+
+    nav .mobile-menu-btn {
+        display: block !important;
+    }
+
+    /* ── Hero: stack vertically ── */
+    #hero .container {
+        flex-direction: column-reverse !important;
+        align-items: center !important;
+        gap: 40px !important;
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    #hero .container > div:first-child {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #hero .container > div:first-child > div[style*="flex"] {
+        justify-content: center;
+    }
+
+    #hero .container > div:last-child {
+        flex-shrink: unset !important;
+    }
+
+    /* Photo size on tablet */
+    #hero .container > div:last-child > div[style*="width: 320"] {
+        width: 220px !important;
+        height: 270px !important;
+    }
+
+    /* Hide floating stats badge on small screens */
+    #hero .container > div:last-child > div:last-child {
+        display: none !important;
+    }
+
+    /* ── Objective: stack vertically ── */
+    #objective .container > div {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+
+    /* ── Achievements: single column ── */
+    #achievements .container > div[style*="grid-template-columns: repeat(2"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* ── Contact: stack vertically ── */
+    #contact .container > div[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+
+    /* ── References: responsive grid ── */
+    #references .container > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* ── Seminars & Certificates: single col ── */
+    #seminars .container > div[style*="grid"],
+    #certificates .container > div[style*="grid"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* ── Footer ── */
+    footer .container {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 8px !important;
+    }
+    }
+
+    /* ── Mobile Phones (≤480px) ── */
+    @media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    section {
+        padding: 52px 0;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 32px;
+    }
+
+    /* Hero name font shrink */
+    #hero h1 {
+        font-size: 2.4rem !important;
+    }
+
+    /* Hero buttons stack */
+    #hero .container > div:first-child > div[style*="display: flex"][style*="gap: 16"] {
+        flex-direction: column !important;
+        width: 100%;
+    }
+
+    #hero .container > div:first-child > div[style*="display: flex"][style*="gap: 16"] a {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Card padding reduce */
+    .card {
+        padding: 20px 18px !important;
+    }
+
+    /* Achievements: hide watermark numbers */
+    #achievements .card > div[style*="position: absolute"] {
+        display: none !important;
+    }
+
+    /* Academic timeline indent reduce */
+    #academic .container > div[style*="padding-left"] {
+        padding-left: 20px !important;
+    }
+
+    #academic .container div[style*="left: -39"] {
+        left: -27px !important;
+    }
+
+    /* Contact social icons wrap */
+    #contact div[style*="display: flex"][style*="gap: 14"] {
+        gap: 10px !important;
+    }
+
+    /* Seminar / cert tags overflow */
+    .tag {
+        font-size: 0.65rem !important;
+        padding: 3px 8px !important;
+    }
+    }
+
+    /* ── Extra small (≤360px) ── */
+    @media (max-width: 360px) {
+    #hero h1 {
+        font-size: 2rem !important;
+    }
+
+    .btn-primary,
+    .btn-outline {
+        padding: 12px 20px;
+        font-size: 0.85rem;
+    }
+    }
+
+    /* ============================================================
+    LIGHT MODE IMPROVED — replace your existing light mode CSS
+    at the bottom of App.css with this entire block
+    ============================================================ */
+
+    [data-theme="light"] {
+    --blue-deep:   #e8f2ff;
+    --blue-dark:   #dceeff;
+    --blue-mid:    #cfe3fd;
+    --blue-card:   #ffffff;
+    --blue-border: #a8c8f8;
+    --blue-glow:   #1e5bff;
+    --blue-bright: #2563eb;
+    --blue-light:  #1d4ed8;
+    --blue-ice:    #1e40af;
+    --cyan-accent: #0284c7;
+    --white:       #0a1628;
+    --white-muted: #1e3a5f;
+    --white-dim:   #4a6fa5;
+    }
+
+    /* ── Body ── */
+    [data-theme="light"] body {
+    background-color: #e8f2ff;
+    }
+
+    /* ── Noise / Grain texture overlay on the whole page ── */
+    [data-theme="light"] body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px 128px;
+    }
+
+    /* ── Grid background — more visible ── */
+    [data-theme="light"] .grid-bg {
+    background-image:
+        linear-gradient(rgba(30, 91, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 91, 255, 0.07) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 1;
+    }
+
+    /* ── Glow orbs — more vivid ── */
+    [data-theme="light"] .glow-orb {
+    opacity: 0.6;
+    filter: blur(60px);
+    }
+
+    /* ── Navbar ── */
+    [data-theme="light"] nav {
+    background: rgba(232, 242, 255, 0.92) !important;
+    border-bottom: 1px solid rgba(168, 200, 248, 0.8) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 2px 20px rgba(30, 91, 255, 0.08) !important;
+    }
+
+    /* ── Cards — rich depth ── */
+    [data-theme="light"] .card {
+    background: linear-gradient(145deg, #ffffff, #f5f9ff);
+    border: 1px solid #a8c8f8;
+    box-shadow:
+        0 4px 6px rgba(30, 91, 255, 0.06),
+        0 10px 30px rgba(30, 91, 255, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    [data-theme="light"] .card:hover {
+    border-color: #2563eb;
+    box-shadow:
+        0 8px 16px rgba(30, 91, 255, 0.12),
+        0 20px 40px rgba(30, 91, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    transform: translateY(-4px);
+    }
+
+    /* Top shimmer line on card hover */
+    [data-theme="light"] .card::before {
+    background: linear-gradient(90deg, transparent, #2563eb, transparent);
+    }
+
+    /* ── Section backgrounds — alternating tint ── */
+    [data-theme="light"] #objective,
+    [data-theme="light"] #seminars,
+    [data-theme="light"] #certificates,
+    [data-theme="light"] #references {
+    background: linear-gradient(180deg, #dceeff 0%, #e8f2ff 100%);
+    }
+
+    [data-theme="light"] #academic,
+    [data-theme="light"] #achievements,
+    [data-theme="light"] #projects,
+    [data-theme="light"] #contact {
+    background: linear-gradient(180deg, #e8f2ff 0%, #dceeff 100%);
+    }
+
+    /* ── Hero section ── */
+    [data-theme="light"] #hero {
+    background: linear-gradient(135deg, #dceeff 0%, #e8f2ff 50%, #cfe3fd 100%);
+    }
+
+    /* ── Hero name gradient ── */
+    [data-theme="light"] #hero h1 span:last-child {
+    background: linear-gradient(135deg, #1e5bff, #0284c7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    }
+
+    /* ── Status badge in hero ── */
+    [data-theme="light"] #hero > div > div > div:first-child > div:first-child {
+    background: rgba(2, 132, 199, 0.1);
+    border-color: rgba(2, 132, 199, 0.3);
+    }
+
+    /* ── Photo container glow ── */
+    [data-theme="light"] #hero div[style*="animation: pulse-glow"] {
+    border-color: #a8c8f8 !important;
+    box-shadow: 0 0 30px rgba(30, 91, 255, 0.15),
+                0 0 60px rgba(2, 132, 199, 0.1) !important;
+    }
+
+    /* ── Floating CPE badge ── */
+    [data-theme="light"] #hero div[style*="bottom: -20"] {
+    background: #ffffff !important;
+    border-color: #a8c8f8 !important;
+    box-shadow: 0 4px 15px rgba(30, 91, 255, 0.12) !important;
+    }
+
+    /* ── Section labels ── */
+    [data-theme="light"] .section-label {
+    color: #0284c7;
+    }
+
+    [data-theme="light"] .section-label::before {
+    background: #0284c7;
+    }
+
+    /* ── Section title accent ── */
+    [data-theme="light"] .section-title span {
+    color: #2563eb;
+    }
+
+    /* ── Tags ── */
+    [data-theme="light"] .tag {
+    background:   rgba(37, 99, 235, 0.08);
+    border-color: rgba(37, 99, 235, 0.3);
+    color:        #1d4ed8;
+    }
+
+    /* ── Buttons ── */
+    [data-theme="light"] .btn-primary {
+    box-shadow: 0 4px 15px rgba(30, 91, 255, 0.3);
+    }
+
+    [data-theme="light"] .btn-primary:hover {
+    box-shadow: 0 8px 25px rgba(30, 91, 255, 0.45);
+    }
+
+    [data-theme="light"] .btn-outline {
+    color:        #2563eb;
+    border-color: #a8c8f8;
+    background:   rgba(255, 255, 255, 0.6);
+    }
+
+    [data-theme="light"] .btn-outline:hover {
+    background:   rgba(37, 99, 235, 0.08);
+    border-color: #2563eb;
+    }
+
+    /* ── Divider ── */
+    [data-theme="light"] .divider {
+    background: linear-gradient(90deg, transparent, #a8c8f8, transparent);
+    height: 1px;
+    }
+
+    /* ── Academic timeline ── */
+    [data-theme="light"] #academic .container > div > div:first-child {
+    background: linear-gradient(to bottom, #0284c7, #2563eb, transparent) !important;
+    }
+
+    /* ── Contact form inputs ── */
+    [data-theme="light"] input[type="text"],
+    [data-theme="light"] input[type="email"],
+    [data-theme="light"] textarea {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color:      #0a1628 !important;
+    border:     1px solid #a8c8f8 !important;
+    box-shadow: inset 0 2px 4px rgba(30, 91, 255, 0.04) !important;
+    }
+
+    [data-theme="light"] input[type="text"]:focus,
+    [data-theme="light"] input[type="email"]:focus,
+    [data-theme="light"] textarea:focus {
+    border-color: #2563eb !important;
+    background:   #ffffff !important;
+    box-shadow:   0 0 0 3px rgba(37, 99, 235, 0.12),
+                    inset 0 2px 4px rgba(30, 91, 255, 0.04) !important;
+    }
+
+    [data-theme="light"] input::placeholder,
+    [data-theme="light"] textarea::placeholder {
+    color: #94a3b8 !important;
+    }
+
+    /* ── Contact card ── */
+    [data-theme="light"] #contact .card {
+    background: linear-gradient(145deg, #ffffff, #f5f9ff);
+    border-color: #a8c8f8;
+    }
+
+    /* ── References section ── */
+    [data-theme="light"] #references .card {
+    background: linear-gradient(145deg, #ffffff, #f5f9ff);
+    }
+
+    /* ── Footer ── */
+    [data-theme="light"] footer {
+    background: linear-gradient(180deg, #dceeff, #cfe3fd);
+    border-top: 1px solid #a8c8f8;
+    }
+
+    /* ── Scrollbar ── */
+    [data-theme="light"] ::-webkit-scrollbar-track {
+    background: #dceeff;
+    }
+
+    [data-theme="light"] ::-webkit-scrollbar-thumb {
+    background: #93c5fd;
+    }
+
+    [data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+    background: #2563eb;
+    }
+
+    /* ── Mobile drawer ── */
+    [data-theme="light"] div[style*="rgba(2, 11, 24, 0.97)"] {
+    background: rgba(232, 242, 255, 0.98) !important;
+    }
+
+    /* ── Scan lines — barely visible in light ── */
+    [data-theme="light"] div[style*="repeating-linear-gradient"] {
+    opacity: 0.015 !important;
+    }
+
+    /* ── Smooth transitions on everything ── */
+    *,
+    body,
+    .card,
+    nav,
+    footer,
+    section,
+    input,
+    textarea,
+    .tag,
+    .btn-outline,
+    .btn-primary,
+    .divider,
+    .section-label,
+    .section-title {
+    transition:
+        background-color 0.4s ease,
+        background      0.4s ease,
+        border-color    0.4s ease,
+        color           0.4s ease,
+        box-shadow      0.4s ease !important;
+    }
+
+    /* ============================================================
+    PORTFOLIO FIXES — paste at the bottom of App.css
+    (below the light mode styles)
+    ============================================================ */
+
+    /* ── Fix 1: Project cards mobile overflow ── */
+    @media (max-width: 480px) {
+    #projects .container > div[style*="grid"] {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    #projects .card {
+        width: 100% !important;
+        min-width: 0 !important;
+        overflow: hidden !important;
+    }
+
+    #projects .card > div {
+        flex-wrap: wrap !important;
+    }
+
+    /* Project bottom note */
+    #projects .container > div[style*="margin-top: 48"] {
+        padding: 16px !important;
+    }
+    }
+
+    /* ── Fix 2: Navbar mobile drawer scroll fix ── */
+    /* The mobile drawer should be scrollable when links exceed screen height */
+    nav + div[style*="position:fixed"],
+    nav + div[style*="position: fixed"] {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    }
+
+    /* ── Fix 3: Scroll to top + theme toggle size adjustment ── */
+    @media (max-width: 768px) {
+    /* Scroll to top button */
+    button[title="Scroll to top"],
+    button[aria-label="Scroll to top"] {
+        width: 40px !important;
+        height: 40px !important;
+        bottom: 24px !important;
+        right: 24px !important;
+    }
+
+    /* Theme toggle button */
+    button[title*="Switch"],
+    button[title*="mode"],
+    button[title*="Mode"] {
+        width: 40px !important;
+        height: 40px !important;
+        bottom: 76px !important;
+        right: 24px !important;
+    }
+    }
+
+    @media (max-width: 480px) {
+    button[title="Scroll to top"],
+    button[aria-label="Scroll to top"] {
+        width: 36px !important;
+        height: 36px !important;
+        bottom: 20px !important;
+        right: 20px !important;
+    }
+
+    button[title*="Switch"],
+    button[title*="mode"],
+    button[title*="Mode"] {
+        width: 36px !important;
+        height: 36px !important;
+        bottom: 68px !important;
+        right: 20px !important;
+    }
+    }
+
+    /* ── Fix 4: Project card image placeholder ── */
+    .project-image-placeholder {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, var(--blue-mid), var(--blue-card));
+    border: 1px dashed var(--blue-border);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+    }
+
+    .project-image-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(30,91,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30,91,255,0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    }
+
+    .project-image-placeholder-icon {
+    font-size: 1.8rem;
+    opacity: 0.4;
+    position: relative;
+    z-index: 1;
+    }
+
+    .project-image-placeholder-text {
+    font-family: var(--font-display);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: var(--white-dim);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    }
+
+    .card:hover .project-image-placeholder {
+    border-color: var(--blue-bright);
+    }
+
+    /* Light mode image placeholder */
+    [data-theme="light"] .project-image-placeholder {
+    background: linear-gradient(135deg, #dceeff, #e8f2ff);
+    border-color: #a8c8f8;
+    }
+
+    /* ============================================================
+    PORTFOLIO MOBILE FIXES — paste at the very bottom of App.css
+    ============================================================ */
+
+    /* ── Fix 1: Hide custom cursor on touch/mobile devices ── */
+    @media (hover: none) and (pointer: coarse) {
+    /* Hide the custom cursor elements completely */
+    .cursor,
+    .cursor-follower {
+        display: none !important;
+    }
+
+    /* Restore normal pointer cursor for all interactive elements */
+    body {
+        cursor: auto !important;
+    }
+
+    a, button, [role="button"] {
+        cursor: pointer !important;
+    }
+    }
+
+    /* ── Fix 2: Hide SCROLL indicator on mobile (prevents overlap with social icons) ── */
+    @media (max-width: 768px) {
+    .scroll-indicator {
+        display: none !important;
+    }
+
+    /* Also push the socials slightly lower so they don't crowd the buttons */
+    .hero-socials {
+        margin-top: 8px !important;
+    }
+    }
+
+    /* ── Fix 3: References section — fix spacing between title and paragraph ── */
+    /* The section-title has margin-bottom: 60px by default which is fine,
+    but the paragraph used marginTop: -40 causing it to overlap. 
+    That's fixed in References.jsx directly (marginTop: 0).
+    This CSS rule is a safety net. */
+    #references .section-title {
+    margin-bottom: 24px !important;
+    }
+
+    /* ── Fix 4: Achievements — View Proof button alignment ──
+    Already handled in Achievements.jsx via flex layout.
+    This ensures all achievement cards have equal height in the grid. */
+    #achievements .card {
+    display: flex !important;
+    flex-direction: column !important;
+    }
 }
+
