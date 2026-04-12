@@ -1,0 +1,34 @@
+/* ── Verano Portfolio Styles ─────────────────────────────────
+   All rules are scoped under .verano-root to prevent
+   conflicts with Dashboard.css and Suing.css
+   ─────────────────────────────────────────────────────────── */
+ 
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap');
+ 
+/* ── CSS Variables scoped to Verano's portfolio ── */
+.verano-root {
+  --blue-deep:   #020b18;
+  --blue-dark:   #050f1f;
+  --blue-mid:    #0a1628;
+  --blue-card:   #0d1f3c;
+  --blue-border: #1a3a6b;
+  --blue-glow:   #1e5bff;
+  --blue-bright: #3b82f6;
+  --blue-light:  #60a5fa;
+  --blue-ice:    #93c5fd;
+  --cyan-accent: #00d4ff;
+  --white:       #f0f8ff;
+  --white-muted: #a8c5e8;
+  --white-dim:   #4a6fa5;
+  --font-display: 'Orbitron', monospace;
+  --font-heading: 'Rajdhani', sans-serif;
+  --font-body:    'Inter', sans-serif;
+ 
+  /* Base styles */
+  background-color: var(--blue-deep);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  cursor: none;
+  min-height: 100vh;
+}
