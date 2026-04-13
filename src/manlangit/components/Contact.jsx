@@ -1,5 +1,6 @@
 import { motion } from 'motion/react'
-import { Mail, Github, Linkedin, Twitter, Send } from 'lucide-react'
+import { Send } from 'lucide-react'
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa'
 import { useState } from 'react'
 
 export function Contact() {
@@ -16,10 +17,10 @@ export function Contact() {
   }
 
   const socialLinks = [
-    { icon: Github,   label: 'GitHub',   href: 'https://github.com/Ransuuuu',                                          color: '#00ff00' },
-    { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/lance-kelly-manlangit-05650528a/',         color: '#00ff00' },
-    { icon: Twitter,  label: 'Twitter',  href: 'https://twitter.com',                                                   color: '#00ff00' },
-    { icon: Mail,     label: 'Email',    href: 'mailto:lancekellymanlangit@gmail.com',                                  color: '#00ff00' },
+    { icon: FaGithub,   label: 'GitHub',   href: 'https://github.com/Ransuuuu',                                        color: '#00ff00' },
+    { icon: FaLinkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/lance-kelly-manlangit-05650528a/',       color: '#00ff00' },
+    { icon: FaTwitter,  label: 'Twitter',  href: 'https://twitter.com',                                                 color: '#00ff00' },
+    { icon: FaEnvelope, label: 'Email',    href: 'mailto:lancekellymanlangit@gmail.com',                                color: '#00ff00' },
   ]
 
   return (
