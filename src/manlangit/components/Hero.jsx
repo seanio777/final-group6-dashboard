@@ -90,15 +90,15 @@ export function Hero() {
             transition={{ duration: 0.8 }}
             className="order-1 md:order-2 flex justify-center"
           >
-            <div className="relative">
+            {/* FIX: constrain the wrapper to a max width so the image
+                doesn't expand to fill the full grid column.             */}
+            <div className="relative w-64 md:w-80">
               <div className="absolute inset-0 bg-gradient-to-r from-[#00ff00] to-[#00ff00] rounded-lg blur-xl opacity-50 animate-pulse" />
               <div className="relative neon-border p-1 rounded-lg overflow-hidden">
-                {/* FIX: replaced w-full max-w-md (caused image to be huge) with
-                    explicit portrait dimensions. object-top keeps his face in frame. */}
                 <img
                   src={profileImage}
                   alt="Lance Kelly P. Manlangit"
-                  className="rounded-lg w-64 h-80 md:w-72 md:h-96 object-cover object-top"
+                  className="rounded-lg w-full h-auto object-cover"
                 />
               </div>
               <motion.div

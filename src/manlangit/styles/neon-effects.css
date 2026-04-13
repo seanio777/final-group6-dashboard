@@ -1,10 +1,63 @@
 /* ══════════════════════════════════════════════════════════
    MANLANGIT PORTFOLIO — Neon Effects
-   Scrollbar + section-title are scoped to .manlangit-root
+   All layout resets + visual styles scoped to .manlangit-root
    so they don't bleed into Verano or Suing portfolios.
    ══════════════════════════════════════════════════════════ */
 
-/* Neon Text Effect — global class, only used inside Manlangit */
+/* ── CRITICAL: Reset global #root flex layout for Manlangit ──
+   The global index.css sets:
+     #root { display:flex; flex-direction:column; text-align:center; width:1126px }
+   This crushes all of Manlangit's internal grids and flex rows.
+   We fix it by making .manlangit-root escape those constraints. */
+.manlangit-root {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  text-align: left;
+  cursor: auto;
+}
+
+/* ── Reset global h1/h2 sizes that override Manlangit headings ── */
+.manlangit-root h1,
+.manlangit-root h2,
+.manlangit-root h3,
+.manlangit-root h4 {
+  font-size: revert;
+  font-weight: revert;
+  color: revert;
+  letter-spacing: revert;
+  margin: revert;
+  font-family: 'Orbitron', 'Share Tech Mono', 'Courier New', monospace;
+}
+
+/* ── Reset global color/font that bleeds in from :root ── */
+.manlangit-root,
+.manlangit-root * {
+  color: inherit;
+  font-family: 'Orbitron', 'Share Tech Mono', 'Courier New', monospace;
+}
+
+.manlangit-root a,
+.manlangit-root button {
+  cursor: pointer;
+}
+
+/* ── Section Title: SCOPED to .manlangit-root ── */
+.manlangit-root .section-title {
+  font-size: 3rem;
+  color: #fff;
+  text-shadow:
+    0 0 10px #00ff00,
+    0 0 20px #00ff00;
+}
+
+@media (max-width: 768px) {
+  .manlangit-root .section-title {
+    font-size: 2rem;
+  }
+}
+
+/* Neon Text Effect */
 .neon-text {
   color: #00ff00;
   text-shadow:
@@ -60,34 +113,6 @@
   box-shadow:
     0 0 10px #00ff00,
     0 0 20px rgba(0, 255, 0, 0.5);
-}
-
-/* ── Cursor: restore default system cursor for Manlangit ── */
-/* fonts.css sets .manlangit-root * which can interfere — this ensures
-   the normal arrow cursor is visible throughout the portfolio */
-.manlangit-root {
-  cursor: auto;
-}
-
-.manlangit-root a,
-.manlangit-root button {
-  cursor: pointer;
-}
-
-/* ── Section Title: SCOPED to .manlangit-root ── */
-/* Previously this was global and bled into Verano */
-.manlangit-root .section-title {
-  font-size: 3rem;
-  color: #fff;
-  text-shadow:
-    0 0 10px #00ff00,
-    0 0 20px #00ff00;
-}
-
-@media (max-width: 768px) {
-  .manlangit-root .section-title {
-    font-size: 2rem;
-  }
 }
 
 /* Futuristic Card */
@@ -170,7 +195,6 @@
 }
 
 /* ── Scrollbar: SCOPED to .manlangit-root ── */
-/* Previously global — was making Verano's scrollbar green */
 .manlangit-root ::-webkit-scrollbar {
   width: 10px;
 }

@@ -12,20 +12,21 @@ import './styles/index.css'
 
 export default function Manlangit() {
   return (
-    <div className="manlangit-root bg-black min-h-screen text-white overflow-x-hidden relative">
-
-      {/* ── Background layers (back to front) ────────────────
-          z-index 1: MatrixRain    — faint binary rain
-          z-index 2: GridBackground — mouse-reactive grid
-          z-index 3: InteractiveBackground — particles + connections
-          All three are transparent so they composite together.
-          The black page background comes from bg-black above.
-      ──────────────────────────────────────────────────── */}
+    // FIXES:
+    // 1. No "relative" on root — prevents fixed canvases from being trapped
+    //    inside a positioned ancestor (which made them stack as blocks).
+    // 2. "text-left" and inline style overrides break out of global #root
+    //    flex-column / text-center layout from the shared index.css.
+    <div
+      className="manlangit-root bg-black min-h-screen text-white overflow-x-hidden"
+      style={{ display: 'block', width: '100%', maxWidth: '100%', textAlign: 'left' }}
+    >
+      {/* Background layers — fixed positioning works because parent is NOT relative */}
       <MatrixRain />
       <GridBackground />
       <InteractiveBackground />
 
-      {/* ── Page content sits above all background layers ── */}
+      {/* Page content sits above all background layers */}
       <div className="relative" style={{ zIndex: 10 }}>
         <Navbar />
         <Hero />
@@ -34,7 +35,6 @@ export default function Manlangit() {
         <Skills />
         <Contact />
       </div>
-
     </div>
   )
 }

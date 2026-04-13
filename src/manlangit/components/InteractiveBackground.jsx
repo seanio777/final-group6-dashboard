@@ -38,10 +38,8 @@ export function InteractiveBackground() {
     window.addEventListener('mousemove', handleMouseMove)
 
     const animate = () => {
-      // FIX: clearRect keeps the canvas fully transparent so MatrixRain
-      // and GridBackground show through. The old fillRect with black was
-      // painting over the lower-z-index layers every frame.
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.04)'
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       const particles = particlesRef.current
       const mouse = mouseRef.current
@@ -85,7 +83,6 @@ export function InteractiveBackground() {
         }
       })
 
-      // Mouse glow effect
       const grad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 100)
       grad.addColorStop(0, 'rgba(0, 255, 0, 0.1)')
       grad.addColorStop(1, 'rgba(0, 255, 0, 0)')

@@ -38,34 +38,34 @@ export function Navbar() {
         transition={{ duration: 0.5 }}
       >
         <div className="container mx-auto px-4">
-          {/* FIX: grid-cols-3 ensures the logo is always truly centered,
-              regardless of the width of the left or right sections. */}
-          <div className="grid grid-cols-3 items-center h-16">
+          <div className="flex items-center h-16">
 
-            {/* Left: Dashboard link */}
-            <div className="flex justify-start">
+            {/* Left: Dashboard link — fixed width so logo can center */}
+            <div className="w-40 flex items-center justify-start shrink-0">
               <Link
                 to="/"
-                className="text-sm font-mono text-[#00ff00] hover:text-white transition-colors duration-300"
+                className="text-sm font-mono text-[#00ff00] hover:text-white transition-colors duration-300 whitespace-nowrap"
               >
                 ← DASHBOARD
               </Link>
             </div>
 
-            {/* Center: Logo */}
-            <div className="flex justify-center">
-              <a href="#home" className="text-2xl neon-text">&lt;Portfolio /&gt;</a>
+            {/* Center: Logo — grows to fill space, truly centered */}
+            <div className="flex-1 flex items-center justify-center">
+              <a href="#home" className="text-2xl neon-text whitespace-nowrap">
+                &lt;Portfolio /&gt;
+              </a>
             </div>
 
-            {/* Right: Desktop nav links or mobile toggle */}
-            <div className="flex justify-end">
-              <div className="hidden md:flex items-center gap-8">
+            {/* Right: Desktop nav or mobile toggle — fixed width matching left */}
+            <div className="w-40 flex items-center justify-end shrink-0">
+              <div className="hidden md:flex items-center gap-6">
                 {navItems.map(item => (
                   <a
                     key={item.name}
                     href={item.href}
                     onClick={e => handleNavClick(e, item.href)}
-                    className="text-gray-300 hover:text-[#00ff00] transition-colors duration-300 relative group"
+                    className="text-gray-300 hover:text-[#00ff00] transition-colors duration-300 relative group text-sm"
                   >
                     {item.name}
                     <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#00ff00] transition-all duration-300 group-hover:w-full neon-glow" />
