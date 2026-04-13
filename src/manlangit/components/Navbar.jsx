@@ -30,87 +30,46 @@ export function Navbar() {
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-black/90 backdrop-blur-md border-b border-[#00ff00]/20' : 'bg-transparent'
-        }`}
+        className={`m-navbar ${isScrolled ? 'scrolled' : ''}`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center h-16">
+        <div className="m-navbar-inner">
+          <Link to="/" style={{ color: '#00ff00', fontSize: '0.8rem', fontFamily: 'monospace', whiteSpace: 'nowrap' }}>
+            ← DASHBOARD
+          </Link>
 
-            {/* Left: Dashboard link — fixed width so logo can center */}
-            <div className="w-40 flex items-center justify-start shrink-0">
-              <Link
-                to="/"
-                className="text-sm font-mono text-[#00ff00] hover:text-white transition-colors duration-300 whitespace-nowrap"
-              >
-                ← DASHBOARD
-              </Link>
-            </div>
+          <a href="#home" className="m-nav-logo" onClick={e => handleNavClick(e, '#home')}>
+            &lt;Portfolio /&gt;
+          </a>
 
-            {/* Center: Logo — grows to fill space, truly centered */}
-            <div className="flex-1 flex items-center justify-center">
-              <a href="#home" className="text-2xl neon-text whitespace-nowrap">
-                &lt;Portfolio /&gt;
-              </a>
-            </div>
-
-            {/* Right: Desktop nav or mobile toggle — fixed width matching left */}
-            <div className="w-40 flex items-center justify-end shrink-0">
-              <div className="hidden md:flex items-center gap-6">
-                {navItems.map(item => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    onClick={e => handleNavClick(e, item.href)}
-                    className="text-gray-300 hover:text-[#00ff00] transition-colors duration-300 relative group text-sm"
-                  >
-                    {item.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#00ff00] transition-all duration-300 group-hover:w-full neon-glow" />
-                  </a>
-                ))}
-              </div>
-
-              <button
-                className="md:hidden text-[#00ff00]"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              >
-                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-
-          </div>
-        </div>
-      </motion.nav>
-
-      {/* Mobile menu */}
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="fixed top-16 left-0 right-0 bg-black/95 backdrop-blur-md border-b border-[#00ff00]/20 z-40 md:hidden"
-        >
-          <div className="container mx-auto px-4 py-4">
-            <Link
-              to="/"
-              className="block py-3 text-[#00ff00] hover:text-white transition-colors duration-300 font-mono text-sm"
-            >
-              ← BACK TO DASHBOARD
-            </Link>
+          <nav className="m-nav-links">
             {navItems.map(item => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={e => handleNavClick(e, item.href)}
-                className="block py-3 text-gray-300 hover:text-[#00ff00] transition-colors duration-300"
-              >
+              <a key={item.name} href={item.href} onClick={e => handleNavClick(e, item.href)}>
                 {item.name}
               </a>
             ))}
-          </div>
+          </nav>
+
+          <button className="m-nav-mobile-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </motion.nav>
+
+      {isMobileMenuOpen && (
+        <motion.div
+          className="m-nav-mobile-menu"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <Link to="/" className="m-nav-dash" style={{ color: '#00ff00' }}>← BACK TO DASHBOARD</Link>
+          {navItems.map(item => (
+            <a key={item.name} href={item.href} onClick={e => handleNavClick(e, item.href)}>
+              {item.name}
+            </a>
+          ))}
         </motion.div>
       )}
     </>

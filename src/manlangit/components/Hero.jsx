@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { ChevronDown } from 'lucide-react'
-import profileImage from '../../assets/b79f33035dd07a060bd25a65d5f6f574d9c196c4.png'
 
 export function Hero() {
   const [displayedText, setDisplayedText] = useState('')
@@ -25,103 +24,112 @@ export function Hero() {
   }
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      <div className="absolute inset-0 opacity-20">
+    <section id="home" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', inset: 0, opacity: 0.2 }}>
         <div className="grid-animation" />
       </div>
 
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Scan lines */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
         <motion.div
-          className="absolute top-1/4 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#00ff00] to-transparent"
+          style={{ position: 'absolute', top: '25%', left: 0, width: '100%', height: '2px', background: 'linear-gradient(to right, transparent, #00ff00, transparent)' }}
           animate={{ opacity: [0.3, 1, 0.3], scaleX: [0.8, 1, 0.8] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-1/4 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#00ff00] to-transparent"
+          style={{ position: 'absolute', bottom: '25%', left: 0, width: '100%', height: '2px', background: 'linear-gradient(to right, transparent, #00ff00, transparent)' }}
           animate={{ opacity: [0.3, 1, 0.3], scaleX: [0.8, 1, 0.8] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
         />
       </div>
 
-      <div className="container mx-auto px-4 z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Text */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="order-2 md:order-1"
+      <div className="m-hero-grid" style={{ width: '100%', padding: '0 1rem' }}>
+        {/* Text — shown second on mobile */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          style={{ order: 2 }}
+        >
+          <motion.h1
+            className="neon-text"
+            style={{ fontSize: 'clamp(1.8rem, 4vw, 4rem)', marginBottom: '1.5rem' }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
           >
-            <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl mb-6 neon-text"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+            LANCE KELLY P. MANLANGIT
+          </motion.h1>
+
+          <div style={{ height: '5rem', marginBottom: '2rem' }}>
+            <p style={{ fontSize: '1.1rem', color: '#d1d5db', fontFamily: 'monospace' }}>
+              {displayedText}
+              <span style={{ display: 'inline-block', width: '2px', height: '1.2rem', background: '#00ff00', marginLeft: '4px', animation: 'neonPulse 1s infinite' }} />
+            </p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+            style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
+          >
+            <a href="#contact"
+              className="neon-button"
+              style={{ padding: '0.75rem 2rem', border: '2px solid #00ff00', color: '#00ff00', background: 'transparent', cursor: 'pointer', transition: 'all 0.3s' }}
+              onMouseEnter={e => { e.target.style.background = '#00ff00'; e.target.style.color = '#000'; }}
+              onMouseLeave={e => { e.target.style.background = 'transparent'; e.target.style.color = '#00ff00'; }}
             >
-              LANCE KELLY P. MANLANGIT
-            </motion.h1>
+              Get in Touch
+            </a>
+            <a href="#projects"
+              style={{ padding: '0.75rem 2rem', border: '2px solid #6b7280', color: '#d1d5db', background: 'transparent', cursor: 'pointer', transition: 'all 0.3s' }}
+              onMouseEnter={e => { e.target.style.borderColor = '#00ff00'; e.target.style.color = '#00ff00'; }}
+              onMouseLeave={e => { e.target.style.borderColor = '#6b7280'; e.target.style.color = '#d1d5db'; }}
+            >
+              View Projects
+            </a>
+          </motion.div>
+        </motion.div>
 
-            <div className="h-20 mb-8">
-              <p className="text-xl md:text-2xl text-gray-300 font-mono">
-                {displayedText}
-                <span className="inline-block w-[2px] h-6 bg-[#00ff00] ml-1 animate-pulse" />
-              </p>
+        {/* Photo — shown first on mobile */}
+        <motion.div
+          className="m-hero-image-wrap"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          style={{ order: 1 }}
+        >
+          <div className="m-hero-img-container">
+            <div style={{ position: 'absolute', inset: 0, background: '#00ff00', borderRadius: '8px', filter: 'blur(20px)', opacity: 0.3, animation: 'neonPulse 2s infinite' }} />
+            <div className="neon-border" style={{ borderRadius: '8px', padding: '4px', position: 'relative' }}>
+              {/* Image moved to public folder — reference as /lance.png */}
+              <img
+                src="/lance.png"
+                alt="Lance Kelly P. Manlangit"
+                style={{ width: '280px', height: '350px', objectFit: 'cover', objectPosition: 'top', borderRadius: '6px', display: 'block' }}
+              />
             </div>
-
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-              className="flex gap-4"
+              style={{ position: 'absolute', top: '-1rem', right: '-1rem', color: '#00ff00', opacity: 0.5 }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             >
-              <a href="#contact" className="neon-button px-8 py-3 border-2 border-[#00ff00] text-[#00ff00] hover:bg-[#00ff00] hover:text-black transition-all duration-300">
-                Get in Touch
-              </a>
-              <a href="#projects" className="px-8 py-3 border-2 border-gray-500 text-gray-300 hover:border-[#00ff00] hover:text-[#00ff00] transition-all duration-300">
-                View Projects
-              </a>
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="30" stroke="currentColor" strokeWidth="2" />
+                <circle cx="40" cy="40" r="20" stroke="currentColor" strokeWidth="1" />
+                <circle cx="40" cy="40" r="10" stroke="currentColor" strokeWidth="1" />
+                <line x1="40" y1="10" x2="40" y2="70" stroke="currentColor" strokeWidth="1" />
+                <line x1="10" y1="40" x2="70" y2="40" stroke="currentColor" strokeWidth="1" />
+              </svg>
             </motion.div>
-          </motion.div>
-
-          {/* Photo */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="order-1 md:order-2 flex justify-center"
-          >
-            {/* FIX: constrain the wrapper to a max width so the image
-                doesn't expand to fill the full grid column.             */}
-            <div className="relative w-64 md:w-80">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#00ff00] to-[#00ff00] rounded-lg blur-xl opacity-50 animate-pulse" />
-              <div className="relative neon-border p-1 rounded-lg overflow-hidden">
-                <img
-                  src={profileImage}
-                  alt="Lance Kelly P. Manlangit"
-                  className="rounded-lg w-full h-auto object-cover"
-                />
-              </div>
-              <motion.div
-                className="absolute -top-4 -right-4 text-[#00ff00] opacity-50"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              >
-                <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                  <circle cx="40" cy="40" r="30" stroke="currentColor" strokeWidth="2" />
-                  <circle cx="40" cy="40" r="20" stroke="currentColor" strokeWidth="1" />
-                  <circle cx="40" cy="40" r="10" stroke="currentColor" strokeWidth="1" />
-                  <line x1="40" y1="10" x2="40" y2="70" stroke="currentColor" strokeWidth="1" />
-                  <line x1="10" y1="40" x2="70" y2="40" stroke="currentColor" strokeWidth="1" />
-                </svg>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
 
       <motion.button
         onClick={scrollToAbout}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-[#00ff00] cursor-pointer"
+        style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', color: '#00ff00', background: 'none', border: 'none', cursor: 'pointer' }}
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 1.5, repeat: Infinity }}
       >

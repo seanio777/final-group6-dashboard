@@ -25,36 +25,37 @@ export function Skills() {
   ]
 
   const stats = [
-    { label: 'Projects',     value: 25, suffix: '+' },
-    { label: 'Experience',   value: 3,  suffix: ' yrs' },
-    { label: 'Technologies', value: 15, suffix: '+' },
+    { label: 'Projects',     value: '25+' },
+    { label: 'Experience',   value: '3 yrs' },
+    { label: 'Technologies', value: '15+' },
   ]
 
   return (
-    <section id="skills" className="min-h-screen py-20 relative">
-      <div className="absolute inset-0 opacity-5"><div className="circuit-pattern" /></div>
-      <div className="container mx-auto px-4 z-10">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} onViewportEnter={() => setIsInView(true)}>
-          <h2 className="section-title text-center mb-4">Skills &amp; Technologies</h2>
-          <div className="w-20 h-1 bg-[#00ff00] mx-auto mb-12 neon-glow" />
+    <section id="skills" style={{ position: 'relative' }}>
+      <div style={{ position: 'absolute', inset: 0, opacity: 0.05 }}><div className="circuit-pattern" /></div>
+      <div className="m-container">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+          onViewportEnter={() => setIsInView(true)} className="m-text-center m-mb-4">
+          <h2 className="section-title">Skills & Technologies</h2>
+          <div className="m-divider" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="m-grid-2">
           {/* Skill bars */}
           <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <h3 className="text-2xl mb-6 text-[#00ff00]">Technical Skills</h3>
-            <div className="space-y-6">
+            <h3 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', color: '#00ff00' }}>Technical Skills</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               {skills.map((skill, i) => (
                 <div key={skill.name}>
-                  <div className="flex justify-between mb-2">
-                    <span className="text-gray-300">{skill.name}</span>
-                    <span className="text-[#00ff00]">{skill.level}%</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                    <span style={{ color: '#d1d5db' }}>{skill.name}</span>
+                    <span style={{ color: '#00ff00' }}>{skill.level}%</span>
                   </div>
-                  <div className="h-3 bg-gray-800 rounded-full overflow-hidden neon-border-subtle">
+                  <div className="m-skill-bar-bg">
                     <motion.div
-                      className="h-full bg-gradient-to-r from-[#00ff00] to-[#00cc00] neon-glow"
+                      className="m-skill-bar-fill"
                       initial={{ width: 0 }}
-                      whileInView={{ width: isInView ? `${skill.level}%` : 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
                       viewport={{ once: true }}
                       transition={{ duration: 1, delay: i * 0.1 }}
                     />
@@ -66,32 +67,36 @@ export function Skills() {
 
           {/* Tools + stats */}
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <h3 className="text-2xl mb-6 text-[#00ff00]">Tools &amp; Platforms</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <h3 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', color: '#00ff00' }}>Tools & Platforms</h3>
+            <div className="m-tools-grid">
               {tools.map((tool, i) => (
-                <motion.div key={tool.name} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }} whileHover={{ scale: 1.1, rotate: 5 }} className="futuristic-card p-6 text-center cursor-pointer group">
-                  <div className="text-4xl mb-3 group-hover:scale-125 transition-transform duration-300">{tool.icon}</div>
-                  <p className="text-gray-300 group-hover:text-[#00ff00] transition-colors duration-300">{tool.name}</p>
+                <motion.div key={tool.name} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}
+                  whileHover={{ scale: 1.1 }}
+                  className="futuristic-card"
+                  style={{ textAlign: 'center', cursor: 'pointer', padding: '1.5rem 1rem' }}>
+                  <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{tool.icon}</div>
+                  <p style={{ color: '#d1d5db', fontSize: '0.9rem' }}>{tool.name}</p>
                 </motion.div>
               ))}
             </div>
 
-            <div className="mt-12 grid grid-cols-3 gap-6">
+            <div className="m-stats-grid">
               {stats.map((stat, i) => (
-                <motion.div key={stat.label} initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.2 }} className="text-center">
-                  <div className="relative w-24 h-24 mx-auto mb-3">
-                    <svg className="transform -rotate-90 w-24 h-24">
+                <motion.div key={stat.label} initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.2 }}
+                  style={{ textAlign: 'center' }}>
+                  <div style={{ position: 'relative', width: '96px', height: '96px', margin: '0 auto 0.75rem' }}>
+                    <svg style={{ transform: 'rotate(-90deg)', width: '96px', height: '96px' }}>
                       <circle cx="48" cy="48" r="40" stroke="#1a1a1a" strokeWidth="8" fill="none" />
                       <motion.circle cx="48" cy="48" r="40" stroke="#00ff00" strokeWidth="8" fill="none" strokeLinecap="round"
                         initial={{ strokeDashoffset: 251.2 }} whileInView={{ strokeDashoffset: 50 }} viewport={{ once: true }} transition={{ duration: 1.5, delay: i * 0.2 }}
                         style={{ strokeDasharray: 251.2, filter: 'drop-shadow(0 0 8px #00ff00)' }}
                       />
                     </svg>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-xl text-[#00ff00]">{stat.value}{stat.suffix}</span>
+                    <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <span style={{ color: '#00ff00', fontSize: '0.9rem', fontWeight: 'bold' }}>{stat.value}</span>
                     </div>
                   </div>
-                  <p className="text-gray-400">{stat.label}</p>
+                  <p style={{ color: '#9ca3af', fontSize: '0.9rem' }}>{stat.label}</p>
                 </motion.div>
               ))}
             </div>

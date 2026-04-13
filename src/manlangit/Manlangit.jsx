@@ -12,22 +12,17 @@ import './styles/index.css'
 
 export default function Manlangit() {
   return (
-    // FIXES:
-    // 1. No "relative" on root — prevents fixed canvases from being trapped
-    //    inside a positioned ancestor (which made them stack as blocks).
-    // 2. "text-left" and inline style overrides break out of global #root
-    //    flex-column / text-center layout from the shared index.css.
+    // No "relative" here — keeps fixed canvases as true viewport overlays
+    // Inline style overrides the global #root flex layout
     <div
-      className="manlangit-root bg-black min-h-screen text-white overflow-x-hidden"
+      className="manlangit-root"
       style={{ display: 'block', width: '100%', maxWidth: '100%', textAlign: 'left' }}
     >
-      {/* Background layers — fixed positioning works because parent is NOT relative */}
       <MatrixRain />
       <GridBackground />
       <InteractiveBackground />
 
-      {/* Page content sits above all background layers */}
-      <div className="relative" style={{ zIndex: 10 }}>
+      <div style={{ position: 'relative', zIndex: 10 }}>
         <Navbar />
         <Hero />
         <About />
