@@ -62,6 +62,18 @@
     0 0 20px rgba(0, 255, 0, 0.5);
 }
 
+/* ── Cursor: restore default system cursor for Manlangit ── */
+/* fonts.css sets .manlangit-root * which can interfere — this ensures
+   the normal arrow cursor is visible throughout the portfolio */
+.manlangit-root {
+  cursor: auto;
+}
+
+.manlangit-root a,
+.manlangit-root button {
+  cursor: pointer;
+}
+
 /* ── Section Title: SCOPED to .manlangit-root ── */
 /* Previously this was global and bled into Verano */
 .manlangit-root .section-title {

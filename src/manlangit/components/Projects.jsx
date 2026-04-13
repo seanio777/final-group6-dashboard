@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'; // Changed from 'motion/react'
-import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa'; // Standardized to FaExternalLinkAlt for better compatibility
+import { motion } from 'motion/react'
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 
 export function Projects() {
   const projects = [
@@ -50,44 +50,50 @@ export function Projects() {
   return (
     <section id="projects" className="min-h-screen py-20 relative bg-[#0a0a0a]">
       <div className="container mx-auto px-4">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          viewport={{ once: true }} 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold text-center mb-4 text-white">Projects</h2>
-          <div className="w-20 h-1 bg-[#00ff00] mx-auto mb-12 shadow-[0_0_10px_#00ff00]" />
+          <h2 className="section-title text-center mb-4">Projects</h2>
+          <div className="w-20 h-1 bg-[#00ff00] mx-auto mb-12 neon-glow" />
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <motion.div 
-              key={project.title} 
-              initial={{ opacity: 0, y: 30 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }} 
-              transition={{ duration: 0.5, delay: index * 0.1 }} 
-              className="bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 group hover:border-[#00ff00]/50 transition-all duration-300"
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="project-card group"
             >
+              {/* Image */}
               <div className="relative overflow-hidden h-48">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                  <a href={project.github} target="_blank" rel="noreferrer" className="p-3 bg-gray-900 rounded-full text-[#00ff00] hover:bg-[#00ff00] hover:text-black transition-all">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+                {/* Overlay links */}
+                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <a href={project.github} target="_blank" rel="noreferrer"
+                    className="p-3 bg-black/80 rounded-full text-[#00ff00] hover:bg-[#00ff00] hover:text-black transition-all duration-300 neon-glow">
                     <FaGithub size={20} />
                   </a>
-                  <a href={project.demo} target="_blank" rel="noreferrer" className="p-3 bg-gray-900 rounded-full text-[#00ff00] hover:bg-[#00ff00] hover:text-black transition-all">
+                  <a href={project.demo} target="_blank" rel="noreferrer"
+                    className="p-3 bg-black/80 rounded-full text-[#00ff00] hover:bg-[#00ff00] hover:text-black transition-all duration-300 neon-glow">
                     <FaExternalLinkAlt size={20} />
                   </a>
                 </div>
               </div>
 
+              {/* Info */}
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-[#00ff00] transition-colors">
+                <h3 className="text-xl mb-3 text-white group-hover:text-[#00ff00] transition-colors duration-300">
                   {project.title}
                 </h3>
                 <p className="text-gray-400 mb-4 text-sm leading-relaxed">
@@ -95,10 +101,8 @@ export function Projects() {
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map(tag => (
-                    <span 
-                      key={tag} 
-                      className="text-[10px] uppercase tracking-wider px-2 py-1 border border-[#00ff00]/30 text-[#00ff00] rounded"
-                    >
+                    <span key={tag}
+                      className="text-xs px-3 py-1 border border-[#00ff00]/30 text-[#00ff00] rounded-full hover:bg-[#00ff00]/10 transition-colors duration-300">
                       {tag}
                     </span>
                   ))}

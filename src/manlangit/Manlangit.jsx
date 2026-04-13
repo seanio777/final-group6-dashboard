@@ -8,14 +8,14 @@ import { InteractiveBackground } from './components/InteractiveBackground'
 import { GridBackground }        from './components/GridBackground'
 import { MatrixRain }            from './components/MatrixRain'
 
-// Relative imports — NOT absolute /src/... paths which cause Vite issues
-import './styles/neon-effects.css'
-import './styles/fonts.css'
+// index.css chains: tailwind.css → fonts.css → neon-effects.css
+// Tailwind MUST be loaded or all utility classes (grid, flex, hidden, etc.) break
+import './styles/index.css'
 
 export default function Manlangit() {
   return (
-    // The class "manlangit-root" lets us scope any CSS overrides
-    // without affecting Verano's or Suing's portfolios
+    // manlangit-root scopes fonts, section-title neon, and scrollbar color
+    // so they don't bleed into Verano or Suing portfolios
     <div className="manlangit-root bg-black min-h-screen text-white overflow-x-hidden relative">
       <InteractiveBackground />
       <GridBackground />
