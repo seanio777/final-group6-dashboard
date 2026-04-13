@@ -11,9 +11,8 @@ const members = [
     tagline: '"Think in logic. Build in code. Innovate in reality."',
     photo: '/lance.jpeg',
     alt: 'Lance',
-    // Manlangit stays external — TypeScript project not yet merged
-    href: 'https://personal-portfolio-ten-phi-88.vercel.app/?fbclid=IwY2xjawQ4qWpleHRuA2FlbQIxMABicmlkETFFT011TG5pMVBPY3lUVERMc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHolUZSMO8RYARsJWio1FODUZMa9Ke2RmtW9m83qTx76AdMWc-lZnOSfHtRuf_aem_JEK6syc_9z1fMCHLP7_4dQ',
-    external: true,
+    href: '/manlangit',
+    external: false,
   },
   {
     id: '02',

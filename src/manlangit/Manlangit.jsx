@@ -8,15 +8,15 @@ import { InteractiveBackground } from './components/InteractiveBackground'
 import { GridBackground }        from './components/GridBackground'
 import { MatrixRain }            from './components/MatrixRain'
 
-// Manlangit's portfolio uses Tailwind + neon-effects.css
-// Those styles are global and already loaded via the main entry point
-// or can be imported here if kept separate.
-import '/src/manlangit/styles/neon-effects.css'
-import '/src/manlangit/styles/fonts.css'
+// Relative imports — NOT absolute /src/... paths which cause Vite issues
+import './styles/neon-effects.css'
+import './styles/fonts.css'
 
 export default function Manlangit() {
   return (
-    <div className="bg-black min-h-screen text-white overflow-x-hidden relative">
+    // The class "manlangit-root" lets us scope any CSS overrides
+    // without affecting Verano's or Suing's portfolios
+    <div className="manlangit-root bg-black min-h-screen text-white overflow-x-hidden relative">
       <InteractiveBackground />
       <GridBackground />
       <MatrixRain />

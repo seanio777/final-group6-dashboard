@@ -1,7 +1,13 @@
-/* Neon Text Effect */
+/* ══════════════════════════════════════════════════════════
+   MANLANGIT PORTFOLIO — Neon Effects
+   Scrollbar + section-title are scoped to .manlangit-root
+   so they don't bleed into Verano or Suing portfolios.
+   ══════════════════════════════════════════════════════════ */
+
+/* Neon Text Effect — global class, only used inside Manlangit */
 .neon-text {
   color: #00ff00;
-  text-shadow: 
+  text-shadow:
     0 0 10px #00ff00,
     0 0 20px #00ff00,
     0 0 30px #00ff00,
@@ -11,7 +17,7 @@
 
 /* Neon Glow Effect */
 .neon-glow {
-  box-shadow: 
+  box-shadow:
     0 0 5px #00ff00,
     0 0 10px #00ff00,
     0 0 15px #00ff00,
@@ -21,7 +27,7 @@
 /* Neon Border */
 .neon-border {
   border: 2px solid #00ff00;
-  box-shadow: 
+  box-shadow:
     0 0 10px #00ff00,
     0 0 20px #00ff00,
     inset 0 0 10px #00ff00,
@@ -30,7 +36,7 @@
 
 .neon-border-subtle {
   border: 1px solid rgba(0, 255, 0, 0.3);
-  box-shadow: 
+  box-shadow:
     0 0 5px rgba(0, 255, 0, 0.2),
     inset 0 0 5px rgba(0, 255, 0, 0.1);
 }
@@ -43,7 +49,7 @@
 }
 
 .neon-button:hover {
-  box-shadow: 
+  box-shadow:
     0 0 10px #00ff00,
     0 0 20px #00ff00,
     0 0 30px #00ff00;
@@ -51,22 +57,23 @@
 
 /* Neon Input */
 .neon-input:focus {
-  box-shadow: 
+  box-shadow:
     0 0 10px #00ff00,
     0 0 20px rgba(0, 255, 0, 0.5);
 }
 
-/* Section Title */
-.section-title {
+/* ── Section Title: SCOPED to .manlangit-root ── */
+/* Previously this was global and bled into Verano */
+.manlangit-root .section-title {
   font-size: 3rem;
   color: #fff;
-  text-shadow: 
+  text-shadow:
     0 0 10px #00ff00,
     0 0 20px #00ff00;
 }
 
 @media (max-width: 768px) {
-  .section-title {
+  .manlangit-root .section-title {
     font-size: 2rem;
   }
 }
@@ -95,7 +102,7 @@
 
 .futuristic-card:hover {
   border-color: #00ff00;
-  box-shadow: 
+  box-shadow:
     0 0 20px rgba(0, 255, 0, 0.3),
     inset 0 0 20px rgba(0, 255, 0, 0.1);
   transform: translateY(-5px);
@@ -116,7 +123,7 @@
 
 .project-card:hover {
   border-color: #00ff00;
-  box-shadow: 
+  box-shadow:
     0 0 20px rgba(0, 255, 0, 0.4),
     0 0 40px rgba(0, 255, 0, 0.2);
   transform: translateY(-10px);
@@ -126,7 +133,7 @@
 .grid-animation {
   width: 100%;
   height: 100%;
-  background-image: 
+  background-image:
     linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
@@ -134,19 +141,15 @@
 }
 
 @keyframes gridMove {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 50px 50px;
-  }
+  0%   { background-position: 0 0; }
+  100% { background-position: 50px 50px; }
 }
 
 /* Circuit Pattern */
 .circuit-pattern {
   width: 100%;
   height: 100%;
-  background-image: 
+  background-image:
     radial-gradient(circle at 20% 50%, rgba(0, 255, 0, 0.1) 1px, transparent 1px),
     radial-gradient(circle at 80% 80%, rgba(0, 255, 0, 0.1) 1px, transparent 1px),
     radial-gradient(circle at 40% 20%, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
@@ -154,50 +157,24 @@
   background-position: 0 0, 50px 50px, 25px 75px;
 }
 
-/* Smooth Scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
+/* ── Scrollbar: SCOPED to .manlangit-root ── */
+/* Previously global — was making Verano's scrollbar green */
+.manlangit-root ::-webkit-scrollbar {
   width: 10px;
 }
 
-::-webkit-scrollbar-track {
+.manlangit-root ::-webkit-scrollbar-track {
   background: #000;
 }
 
-::-webkit-scrollbar-thumb {
+.manlangit-root ::-webkit-scrollbar-thumb {
   background: #00ff00;
   border-radius: 5px;
   box-shadow: 0 0 10px #00ff00;
 }
 
-::-webkit-scrollbar-thumb:hover {
+.manlangit-root ::-webkit-scrollbar-thumb:hover {
   background: #00cc00;
-}
-
-/* Glowing Line Animation */
-@keyframes glowPulse {
-  0%, 100% {
-    opacity: 0.3;
-    filter: blur(5px);
-  }
-  50% {
-    opacity: 1;
-    filter: blur(10px);
-  }
-}
-
-/* Matrix Rain Effect (subtle) */
-@keyframes matrixRain {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(100vh);
-  }
 }
 
 /* Responsive adjustments */
@@ -205,7 +182,7 @@ html {
   .neon-text {
     font-size: 2.5rem;
   }
-  
+
   .futuristic-card {
     padding: 1rem;
   }
@@ -214,12 +191,12 @@ html {
 /* Loading Animation */
 @keyframes neonPulse {
   0%, 100% {
-    box-shadow: 
+    box-shadow:
       0 0 5px #00ff00,
       0 0 10px #00ff00;
   }
   50% {
-    box-shadow: 
+    box-shadow:
       0 0 10px #00ff00,
       0 0 20px #00ff00,
       0 0 30px #00ff00;
