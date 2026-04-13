@@ -1,4 +1,11 @@
 @import './fonts.css';
-@import './tailwind.css';
-@import './theme.css';
 @import './neon-effects.css';
+
+/* NOTE: tailwind.css and theme.css are intentionally excluded here.
+   - theme.css uses Tailwind v4 CSS variables (--text-2xl etc.) that
+     aren't defined in this merged Vite project, which breaks heading sizes.
+   - Tailwind utility classes (bg-black, text-white, grid, etc.) still work
+     because they come from Manlangit's original tailwind.css source scan,
+     which Vite picks up automatically when the file is in src/.
+   If you need theme.css variables (for shadcn components), add it back only
+   after confirming your Tailwind v4 setup is complete. */
