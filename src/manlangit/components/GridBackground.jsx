@@ -28,6 +28,7 @@ export function GridBackground() {
     let rafId
 
     const drawGrid = () => {
+      // TRANSPARENT clear — does NOT paint black, so MatrixRain shows through
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       const mouse = mouseRef.current
       offsetX += 0.2
@@ -75,5 +76,11 @@ export function GridBackground() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-0 opacity-30" />
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed inset-0 pointer-events-none opacity-30"
+      style={{ zIndex: 2 }}
+    />
+  )
 }

@@ -8,19 +8,25 @@ import { InteractiveBackground } from './components/InteractiveBackground'
 import { GridBackground }        from './components/GridBackground'
 import { MatrixRain }            from './components/MatrixRain'
 
-// index.css chains: tailwind.css → fonts.css → neon-effects.css
-// Tailwind MUST be loaded or all utility classes (grid, flex, hidden, etc.) break
 import './styles/index.css'
 
 export default function Manlangit() {
   return (
-    // manlangit-root scopes fonts, section-title neon, and scrollbar color
-    // so they don't bleed into Verano or Suing portfolios
     <div className="manlangit-root bg-black min-h-screen text-white overflow-x-hidden relative">
-      <InteractiveBackground />
-      <GridBackground />
+
+      {/* ── Background layers (back to front) ────────────────
+          z-index 1: MatrixRain    — faint binary rain
+          z-index 2: GridBackground — mouse-reactive grid
+          z-index 3: InteractiveBackground — particles + connections
+          All three are transparent so they composite together.
+          The black page background comes from bg-black above.
+      ──────────────────────────────────────────────────── */}
       <MatrixRain />
-      <div className="relative z-10">
+      <GridBackground />
+      <InteractiveBackground />
+
+      {/* ── Page content sits above all background layers ── */}
+      <div className="relative" style={{ zIndex: 10 }}>
         <Navbar />
         <Hero />
         <About />
@@ -28,6 +34,7 @@ export default function Manlangit() {
         <Skills />
         <Contact />
       </div>
+
     </div>
   )
 }

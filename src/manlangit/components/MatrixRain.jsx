@@ -17,11 +17,11 @@ export function MatrixRain() {
     window.addEventListener('resize', resizeCanvas)
 
     const fontSize = 14
-    let columns = Math.floor(canvas.width / fontSize)
-    let drops = Array(columns).fill(1)
+    let drops = Array(Math.floor(canvas.width / fontSize)).fill(1)
     const chars = '01'
 
     const draw = () => {
+      // Semi-transparent black fade — keeps trails without blocking other layers
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
       ctx.fillStyle = '#00ff00'
@@ -45,5 +45,11 @@ export function MatrixRain() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-0 opacity-10" />
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed inset-0 pointer-events-none opacity-10"
+      style={{ zIndex: 1 }}
+    />
+  )
 }

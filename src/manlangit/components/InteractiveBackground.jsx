@@ -38,7 +38,10 @@ export function InteractiveBackground() {
     window.addEventListener('mousemove', handleMouseMove)
 
     const animate = () => {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'
+      // KEY FIX: Use a very subtle semi-transparent clear instead of solid black.
+      // This keeps particle trails fading naturally WITHOUT blocking the
+      // MatrixRain and GridBackground layers underneath.
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.04)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       const particles = particlesRef.current
@@ -83,6 +86,7 @@ export function InteractiveBackground() {
         }
       })
 
+      // Mouse glow effect
       const grad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 100)
       grad.addColorStop(0, 'rgba(0, 255, 0, 0.1)')
       grad.addColorStop(1, 'rgba(0, 255, 0, 0)')
@@ -103,8 +107,10 @@ export function InteractiveBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0"
-      style={{ background: '#000000' }}
+      className="fixed inset-0 pointer-events-none"
+      // NO background: '#000000' here — that was blocking the layers below!
+      // The black page background comes from .manlangit-root's bg-black class.
+      style={{ zIndex: 3 }}
     />
   )
 }
