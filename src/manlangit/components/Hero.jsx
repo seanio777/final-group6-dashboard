@@ -93,10 +93,12 @@ export function Hero() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-[#00ff00] to-[#00ff00] rounded-lg blur-xl opacity-50 animate-pulse" />
               <div className="relative neon-border p-1 rounded-lg overflow-hidden">
+                {/* FIX: replaced w-full max-w-md (caused image to be huge) with
+                    explicit portrait dimensions. object-top keeps his face in frame. */}
                 <img
                   src={profileImage}
                   alt="Lance Kelly P. Manlangit"
-                  className="rounded-lg w-full max-w-md object-cover"
+                  className="rounded-lg w-64 h-80 md:w-72 md:h-96 object-cover object-top"
                 />
               </div>
               <motion.div

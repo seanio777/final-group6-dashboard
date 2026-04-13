@@ -38,40 +38,49 @@ export function Navbar() {
         transition={{ duration: 0.5 }}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            {/* ← Dashboard link */}
-            <Link
-              to="/"
-              className="text-sm font-mono text-[#00ff00] hover:text-white transition-colors duration-300"
-            >
-              ← DASHBOARD
-            </Link>
+          {/* FIX: grid-cols-3 ensures the logo is always truly centered,
+              regardless of the width of the left or right sections. */}
+          <div className="grid grid-cols-3 items-center h-16">
 
-            {/* Logo */}
-            <a href="#home" className="text-2xl neon-text">&lt;Portfolio /&gt;</a>
-
-            {/* Desktop nav */}
-            <div className="hidden md:flex items-center gap-8">
-              {navItems.map(item => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={e => handleNavClick(e, item.href)}
-                  className="text-gray-300 hover:text-[#00ff00] transition-colors duration-300 relative group"
-                >
-                  {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#00ff00] transition-all duration-300 group-hover:w-full neon-glow" />
-                </a>
-              ))}
+            {/* Left: Dashboard link */}
+            <div className="flex justify-start">
+              <Link
+                to="/"
+                className="text-sm font-mono text-[#00ff00] hover:text-white transition-colors duration-300"
+              >
+                ← DASHBOARD
+              </Link>
             </div>
 
-            {/* Mobile toggle */}
-            <button
-              className="md:hidden text-[#00ff00]"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {/* Center: Logo */}
+            <div className="flex justify-center">
+              <a href="#home" className="text-2xl neon-text">&lt;Portfolio /&gt;</a>
+            </div>
+
+            {/* Right: Desktop nav links or mobile toggle */}
+            <div className="flex justify-end">
+              <div className="hidden md:flex items-center gap-8">
+                {navItems.map(item => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={e => handleNavClick(e, item.href)}
+                    className="text-gray-300 hover:text-[#00ff00] transition-colors duration-300 relative group"
+                  >
+                    {item.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#00ff00] transition-all duration-300 group-hover:w-full neon-glow" />
+                  </a>
+                ))}
+              </div>
+
+              <button
+                className="md:hidden text-[#00ff00]"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+
           </div>
         </div>
       </motion.nav>

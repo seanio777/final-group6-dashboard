@@ -38,11 +38,10 @@ export function InteractiveBackground() {
     window.addEventListener('mousemove', handleMouseMove)
 
     const animate = () => {
-      // KEY FIX: Use a very subtle semi-transparent clear instead of solid black.
-      // This keeps particle trails fading naturally WITHOUT blocking the
-      // MatrixRain and GridBackground layers underneath.
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.04)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      // FIX: clearRect keeps the canvas fully transparent so MatrixRain
+      // and GridBackground show through. The old fillRect with black was
+      // painting over the lower-z-index layers every frame.
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       const particles = particlesRef.current
       const mouse = mouseRef.current
@@ -108,8 +107,6 @@ export function InteractiveBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none"
-      // NO background: '#000000' here — that was blocking the layers below!
-      // The black page background comes from .manlangit-root's bg-black class.
       style={{ zIndex: 3 }}
     />
   )
