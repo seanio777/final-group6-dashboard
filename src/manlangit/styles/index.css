@@ -1,13 +1,4 @@
-/* Tailwind MUST come first so all utility classes work:
-   bg-black, text-white, grid, hidden md:flex, container, etc. */
-@import './tailwind.css';
-
-/* Fonts (scoped to .manlangit-root so they don't bleed into other portfolios) */
 @import './fonts.css';
-
-/* Neon effects (.section-title, scrollbar, etc. scoped to .manlangit-root) */
+@import './tailwind.css';
+@import './theme.css';
 @import './neon-effects.css';
-
-/* theme.css is intentionally excluded — it uses Tailwind v4 CSS variables
-   (--text-2xl etc.) that aren't defined in this merged Vite project,
-   which collapses all heading sizes to 0. */

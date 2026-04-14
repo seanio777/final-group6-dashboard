@@ -1,356 +1,240 @@
-/* ══════════════════════════════════════════════════════════
-   MANLANGIT PORTFOLIO — All styles scoped to .manlangit-root
-   ══════════════════════════════════════════════════════════ */
-
-/* ── 1. HARD RESET: Break out of global #root flex layout ── */
-.manlangit-root {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  text-align: left !important;
-  cursor: auto;
-  color: #fff;
-  background: #000;
-  min-height: 100vh;
-  overflow-x: hidden;
-  box-sizing: border-box;
-  border: none !important;
-}
-
-/* ── 2. Reset ALL global heading styles inside manlangit ── */
-.manlangit-root h1,
-.manlangit-root h2,
-.manlangit-root h3,
-.manlangit-root h4,
-.manlangit-root p,
-.manlangit-root span,
-.manlangit-root a,
-.manlangit-root button,
-.manlangit-root label,
-.manlangit-root input,
-.manlangit-root textarea {
-  font-family: 'Orbitron', 'Share Tech Mono', 'Courier New', monospace !important;
-  letter-spacing: normal;
-  margin: 0;
-  color: inherit;
-}
-
-.manlangit-root h1 { font-size: 3.5rem; font-weight: 700; line-height: 1.1; }
-.manlangit-root h2 { font-size: 1.5rem; font-weight: 600; line-height: 1.3; }
-.manlangit-root h3 { font-size: 1.25rem; font-weight: 600; }
-.manlangit-root h4 { font-size: 1rem; font-weight: 600; }
-
-.manlangit-root a { cursor: pointer; text-decoration: none; }
-.manlangit-root button { cursor: pointer; }
-
-/* ── 3. NAVBAR ── */
-.manlangit-root .m-navbar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 50;
-  transition: all 0.3s ease;
-}
-.manlangit-root .m-navbar.scrolled {
-  background: rgba(0,0,0,0.9);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,255,0,0.2);
-}
-.manlangit-root .m-navbar-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  display: flex !important;
-  align-items: center;
-  justify-content: space-between;
-  height: 64px;
-}
-.manlangit-root .m-nav-logo {
-  font-size: 1.5rem;
-  color: #00ff00;
-  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
-  font-weight: bold;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.manlangit-root .m-nav-links {
-  display: flex !important;
-  align-items: center;
-  gap: 2rem;
-  margin-left: auto;
-}
-.manlangit-root .m-nav-links a {
-  color: #d1d5db;
-  font-size: 0.9rem;
-  transition: color 0.3s;
-}
-.manlangit-root .m-nav-links a:hover { color: #00ff00; }
-.manlangit-root .m-nav-mobile-btn {
-  display: none !important;
-  background: none;
-  border: none;
-  color: #00ff00;
-  margin-left: auto;
-}
-.manlangit-root .m-nav-mobile-menu {
-  position: fixed;
-  top: 64px; left: 0; right: 0;
-  background: rgba(0,0,0,0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,255,0,0.2);
-  z-index: 40;
-  padding: 1rem;
-}
-.manlangit-root .m-nav-mobile-menu a,
-.manlangit-root .m-nav-mobile-menu .m-nav-dash {
-  display: block !important;
-  padding: 0.75rem 0;
-  color: #d1d5db;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.manlangit-root .m-nav-mobile-menu a:hover { color: #00ff00; }
-
-@media (max-width: 768px) {
-  .manlangit-root .m-nav-links { display: none !important; }
-  .manlangit-root .m-nav-mobile-btn { display: flex !important; }
-  .manlangit-root h1 { font-size: 2rem; }
-}
-
-/* ── 4. SECTIONS ── */
-.manlangit-root section {
-  min-height: 100vh;
-  padding: 5rem 1rem;
-  position: relative;
-  box-sizing: border-box;
-}
-.manlangit-root .m-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 10;
-}
-
-/* ── 5. GRID LAYOUTS ── */
-.manlangit-root .m-grid-2 {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-.manlangit-root .m-grid-3 {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-.manlangit-root .m-grid-auto {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-@media (max-width: 900px) {
-  .manlangit-root .m-grid-2 { grid-template-columns: 1fr; }
-  .manlangit-root .m-grid-3 { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 600px) {
-  .manlangit-root .m-grid-3 { grid-template-columns: 1fr; }
-}
-
-/* ── 6. HERO ── */
-.manlangit-root .m-hero-grid {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.manlangit-root .m-hero-image-wrap {
-  display: flex !important;
-  justify-content: center;
-}
-.manlangit-root .m-hero-img-container {
-  position: relative;
-  width: 280px;
-}
-.manlangit-root .m-hero-img-container img {
-  width: 280px;
-  height: 350px;
-  object-fit: cover;
-  object-position: top;
-  border-radius: 8px;
-  display: block;
-}
-@media (max-width: 768px) {
-  .manlangit-root .m-hero-grid {
-    grid-template-columns: 1fr;
-  }
-  .manlangit-root .m-hero-image-wrap {
-    order: -1;
-  }
-}
-
-/* ── 7. SECTION TITLE ── */
-.manlangit-root .section-title {
-  font-size: 3rem;
-  color: #fff;
-  font-weight: 700;
-  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-@media (max-width: 768px) {
-  .manlangit-root .section-title { font-size: 2rem; }
-}
-
-/* ── 8. CARDS ── */
-.manlangit-root .futuristic-card {
-  background: linear-gradient(135deg, rgba(0,255,0,0.05) 0%, rgba(0,0,0,0.8) 100%);
-  border: 1px solid rgba(0,255,0,0.2);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  padding: 2rem;
-}
-.manlangit-root .futuristic-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0,255,0,0.1), transparent);
-  transition: left 0.5s ease;
-}
-.manlangit-root .futuristic-card:hover {
-  border-color: #00ff00;
-  box-shadow: 0 0 20px rgba(0,255,0,0.3), inset 0 0 20px rgba(0,255,0,0.1);
-  transform: translateY(-5px);
-}
-.manlangit-root .futuristic-card:hover::before { left: 100%; }
-
-.manlangit-root .project-card {
-  background: rgba(0,0,0,0.8);
-  border: 1px solid rgba(0,255,0,0.2);
-  border-radius: 12px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-.manlangit-root .project-card:hover {
-  border-color: #00ff00;
-  box-shadow: 0 0 20px rgba(0,255,0,0.4), 0 0 40px rgba(0,255,0,0.2);
-  transform: translateY(-10px);
-}
-
-/* ── 9. NEON EFFECTS ── */
+/* Neon Text Effect */
 .neon-text {
   color: #00ff00;
-  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
+  text-shadow: 
+    0 0 10px #00ff00,
+    0 0 20px #00ff00,
+    0 0 30px #00ff00,
+    0 0 40px #00ff00;
   font-weight: bold;
 }
+
+/* Neon Glow Effect */
 .neon-glow {
-  box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00;
+  box-shadow: 
+    0 0 5px #00ff00,
+    0 0 10px #00ff00,
+    0 0 15px #00ff00,
+    0 0 20px #00ff00;
 }
+
+/* Neon Border */
 .neon-border {
   border: 2px solid #00ff00;
-  box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, inset 0 0 10px #00ff00, inset 0 0 20px #00ff00;
+  box-shadow: 
+    0 0 10px #00ff00,
+    0 0 20px #00ff00,
+    inset 0 0 10px #00ff00,
+    inset 0 0 20px #00ff00;
 }
+
 .neon-border-subtle {
-  border: 1px solid rgba(0,255,0,0.3);
-  box-shadow: 0 0 5px rgba(0,255,0,0.2), inset 0 0 5px rgba(0,255,0,0.1);
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  box-shadow: 
+    0 0 5px rgba(0, 255, 0, 0.2),
+    inset 0 0 5px rgba(0, 255, 0, 0.1);
 }
+
+/* Neon Button */
 .neon-button {
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
 }
+
 .neon-button:hover {
-  box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
-}
-.neon-input:focus {
-  box-shadow: 0 0 10px #00ff00, 0 0 20px rgba(0,255,0,0.5);
+  box-shadow: 
+    0 0 10px #00ff00,
+    0 0 20px #00ff00,
+    0 0 30px #00ff00;
 }
 
-/* ── 10. BACKGROUND PATTERNS ── */
+/* Neon Input */
+.neon-input:focus {
+  box-shadow: 
+    0 0 10px #00ff00,
+    0 0 20px rgba(0, 255, 0, 0.5);
+}
+
+/* Section Title — scoped so it doesn't bleed into Verano/Suing */
+.manlangit-root .section-title {
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 
+    0 0 10px #00ff00,
+    0 0 20px #00ff00;
+}
+
+@media (max-width: 768px) {
+  .manlangit-root .section-title {
+    font-size: 2rem;
+  }
+}
+
+/* Futuristic Card */
+.futuristic-card {
+  background: linear-gradient(135deg, rgba(0, 255, 0, 0.05) 0%, rgba(0, 0, 0, 0.8) 100%);
+  border: 1px solid rgba(0, 255, 0, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.futuristic-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.futuristic-card:hover {
+  border-color: #00ff00;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 0, 0.3),
+    inset 0 0 20px rgba(0, 255, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.futuristic-card:hover::before {
+  left: 100%;
+}
+
+/* Project Card */
+.project-card {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 255, 0, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: #00ff00;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 0, 0.4),
+    0 0 40px rgba(0, 255, 0, 0.2);
+  transform: translateY(-10px);
+}
+
+/* Grid Animation Background */
 .grid-animation {
-  width: 100%; height: 100%;
-  background-image:
-    linear-gradient(rgba(0,255,0,0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,0,0.1) 1px, transparent 1px);
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
   animation: gridMove 20s linear infinite;
 }
+
 @keyframes gridMove {
-  0%   { background-position: 0 0; }
-  100% { background-position: 50px 50px; }
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
 }
+
+/* Circuit Pattern */
 .circuit-pattern {
-  width: 100%; height: 100%;
-  background-image:
-    radial-gradient(circle at 20% 50%, rgba(0,255,0,0.1) 1px, transparent 1px),
-    radial-gradient(circle at 80% 80%, rgba(0,255,0,0.1) 1px, transparent 1px),
-    radial-gradient(circle at 40% 20%, rgba(0,255,0,0.1) 1px, transparent 1px);
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 80%, rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 40% 20%, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
   background-size: 100px 100px;
+  background-position: 0 0, 50px 50px, 25px 75px;
 }
 
-/* ── 11. SCROLLBAR ── */
-.manlangit-root ::-webkit-scrollbar { width: 10px; }
-.manlangit-root ::-webkit-scrollbar-track { background: #000; }
-.manlangit-root ::-webkit-scrollbar-thumb { background: #00ff00; border-radius: 5px; }
-.manlangit-root ::-webkit-scrollbar-thumb:hover { background: #00cc00; }
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
 
-/* ── 12. FLEX UTILITIES ── */
-.manlangit-root .m-flex { display: flex !important; }
-.manlangit-root .m-flex-center { display: flex !important; align-items: center; justify-content: center; }
-.manlangit-root .m-flex-between { display: flex !important; align-items: center; justify-content: space-between; }
-.manlangit-root .m-text-center { text-align: center !important; }
-.manlangit-root .m-mb-4 { margin-bottom: 1rem; }
-.manlangit-root .m-mb-8 { margin-bottom: 2rem; }
-.manlangit-root .m-mb-12 { margin-bottom: 3rem; }
-.manlangit-root .m-mt-12 { margin-top: 3rem; }
-.manlangit-root .m-gap-4 { gap: 1rem; }
-.manlangit-root .m-gap-8 { gap: 2rem; }
-.manlangit-root .m-w-full { width: 100%; }
-.manlangit-root .m-divider {
-  width: 5rem; height: 4px;
+/* Cursor — restore default system cursor (simple arrow) */
+.manlangit-root {
+  cursor: auto;
+}
+.manlangit-root a,
+.manlangit-root button {
+  cursor: pointer;
+}
+
+/* Custom Scrollbar — scoped so it doesn't make Verano's scrollbar green */
+.manlangit-root ::-webkit-scrollbar {
+  width: 10px;
+}
+
+.manlangit-root ::-webkit-scrollbar-track {
+  background: #000;
+}
+
+.manlangit-root ::-webkit-scrollbar-thumb {
   background: #00ff00;
-  margin: 0 auto 3rem;
+  border-radius: 5px;
   box-shadow: 0 0 10px #00ff00;
 }
 
-/* ── 13. SKILLS BAR ── */
-.manlangit-root .m-skill-bar-bg {
-  height: 12px;
-  background: #1f2937;
-  border-radius: 9999px;
-  overflow: hidden;
-  border: 1px solid rgba(0,255,0,0.3);
-}
-.manlangit-root .m-skill-bar-fill {
-  height: 100%;
-  background: linear-gradient(to right, #00ff00, #00cc00);
-  border-radius: 9999px;
-  box-shadow: 0 0 8px #00ff00;
-  transition: width 1s ease;
+.manlangit-root ::-webkit-scrollbar-thumb:hover {
+  background: #00cc00;
 }
 
-/* ── 14. TOOLS GRID ── */
-.manlangit-root .m-tools-grid {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-.manlangit-root .m-stats-grid {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 3rem;
-}
-@media (max-width: 600px) {
-  .manlangit-root .m-tools-grid { grid-template-columns: repeat(2, 1fr); }
+/* Glowing Line Animation */
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.3;
+    filter: blur(5px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(10px);
+  }
 }
 
-/* ── 15. ANIMATE ── */
+/* Matrix Rain Effect (subtle) */
+@keyframes matrixRain {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .neon-text {
+    font-size: 2.5rem;
+  }
+  
+  .futuristic-card {
+    padding: 1rem;
+  }
+}
+
+/* Loading Animation */
 @keyframes neonPulse {
-  0%, 100% { box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00; }
-  50% { box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00; }
+  0%, 100% {
+    box-shadow: 
+      0 0 5px #00ff00,
+      0 0 10px #00ff00;
+  }
+  50% {
+    box-shadow: 
+      0 0 10px #00ff00,
+      0 0 20px #00ff00,
+      0 0 30px #00ff00;
+  }
 }
-.animate-neon-pulse { animation: neonPulse 2s ease-in-out infinite; }
+
+.animate-neon-pulse {
+  animation: neonPulse 2s ease-in-out infinite;
+}

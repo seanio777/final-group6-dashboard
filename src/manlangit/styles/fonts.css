@@ -1,9 +1,8 @@
 /* Import futuristic fonts from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap');
 
-/* ── Scoped to .manlangit-root only ── */
-/* Previously "body { font-family: Orbitron... }" was global
-   and overrode Verano's Inter/Rajdhani fonts */
+/* Scoped to .manlangit-root — previously "body { font-family: Orbitron }"
+   was global and overrode Verano's Inter/Rajdhani fonts */
 .manlangit-root,
 .manlangit-root * {
   font-family: 'Orbitron', 'Share Tech Mono', 'Courier New', monospace;
