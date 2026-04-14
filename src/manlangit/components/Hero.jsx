@@ -105,7 +105,7 @@ export function Hero() {
             <div className="neon-border" style={{ borderRadius: '8px', padding: '4px', position: 'relative' }}>
               {/* Image moved to public folder — reference as /lance.png */}
               <img
-                src="/lance.png"
+                src="/lance.jpeg"
                 alt="Lance Kelly P. Manlangit"
                 style={{ width: '280px', height: '350px', objectFit: 'cover', objectPosition: 'top', borderRadius: '6px', display: 'block' }}
               />

@@ -8,21 +8,23 @@ import { InteractiveBackground } from './components/InteractiveBackground'
 import { GridBackground }        from './components/GridBackground'
 import { MatrixRain }            from './components/MatrixRain'
 
-// His original styles — kept exactly as-is from his repo
-// index.css chains: fonts → tailwind (v4) → theme → neon-effects
 import './styles/index.css'
 
 export default function Manlangit() {
   return (
-    // manlangit-root scopes his fonts/scrollbar/section-title
-    // so they don't bleed into Verano or Suing portfolios
-    <div className="manlangit-root bg-black min-h-screen text-white overflow-x-hidden relative">
-      {/* Background layers — back to front */}
-      <MatrixRain />       {/* z-index 1 — faint binary rain */}
-      <GridBackground />   {/* z-index 2 — mouse-reactive grid */}
-      <InteractiveBackground /> {/* z-index 3 — particles */}
+    // IMPORTANT: No "relative" here — it would trap fixed-position canvases
+    // inside this element, making them stack as blocks instead of overlapping.
+    // Inline styles override the global #root { display:flex; text-align:center }
+    <div
+      className="manlangit-root bg-black min-h-screen text-white overflow-x-hidden"
+      style={{ display: 'block', width: '100%', maxWidth: '100%', textAlign: 'left' }}
+    >
+      {/* Background layers — fixed, so they cover the full viewport */}
+      <MatrixRain />
+      <GridBackground />
+      <InteractiveBackground />
 
-      {/* Page content above all backgrounds */}
+      {/* Page content sits above all background layers */}
       <div className="relative" style={{ zIndex: 10 }}>
         <Navbar />
         <Hero />
