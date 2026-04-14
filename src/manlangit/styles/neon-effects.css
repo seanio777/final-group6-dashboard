@@ -268,3 +268,20 @@
   .neon-text { font-size: 2.5rem; }
   .futuristic-card { padding: 1rem; }
 }
+
+/* ── Project card hover overlay ── */
+.project-card:hover .project-overlay {
+  opacity: 1 !important;
+}
+
+/* ── Contact form input base background ── */
+.manlangit-root input,
+.manlangit-root textarea {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-family: inherit;
+}
+.manlangit-root input::placeholder,
+.manlangit-root textarea::placeholder {
+  color: #6b7280;
+}
