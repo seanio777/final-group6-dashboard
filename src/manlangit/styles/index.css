@@ -1,4 +1,4 @@
 @import './tailwind.css';
 @import './fonts.css';
 @import './neon-effects.css';
-/* theme.css excluded — uses Tailwind v4 syntax not compatible with v3 */
+/* theme.css intentionally excluded */
