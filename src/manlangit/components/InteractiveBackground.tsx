@@ -57,6 +57,7 @@ export function InteractiveBackground() {
 
     // Animation loop
     const animate = () => {
+      // Transparent fade — keeps particle trails without blocking MatrixRain/GridBackground below
       ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -145,8 +146,8 @@ export function InteractiveBackground() {
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none"
       style={{ zIndex: 3 }}
-      // No background: '#000000' — that was blocking the layers below.
-      // The black page background comes from bg-black on the wrapper div.
+      // No background:'#000000' — that blocks MatrixRain and GridBackground below.
+      // The page background comes from bg-black on the .manlangit-root wrapper.
     />
   );
 }

@@ -1,4 +1,4 @@
-@import './tailwind.css';
 @import './fonts.css';
+@import './tailwind.css';
 @import './neon-effects.css';
-/* theme.css intentionally excluded */
+/* theme.css intentionally excluded — uses Tailwind v4 vars not defined here */
