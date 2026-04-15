@@ -45,7 +45,35 @@ export function Navbar() {
           <div style={{ display: 'flex', alignItems: 'center', height: '64px', position: 'relative' }}>
 
             {/* Left: Dashboard */}
-            <Link to="/" style={{ color: '#00ff00', fontSize: '0.8rem', fontFamily: 'monospace', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>
+            <Link
+              to="/"
+              style={{
+                color: '#00ff00',
+                fontSize: '0.75rem',
+                fontFamily: 'Orbitron, monospace',
+                textDecoration: 'none',
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
+                padding: '0.4rem 0.85rem',
+                border: '1px solid rgba(0,255,0,0.4)',
+                borderRadius: '4px',
+                background: 'rgba(0,255,0,0.05)',
+                letterSpacing: '0.08em',
+                textShadow: '0 0 8px #00ff00',
+                boxShadow: '0 0 8px rgba(0,255,0,0.15)',
+                transition: 'all 0.3s',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.background = '#00ff00';
+                (e.currentTarget as HTMLElement).style.color = '#000';
+                (e.currentTarget as HTMLElement).style.boxShadow = '0 0 18px rgba(0,255,0,0.5)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.background = 'rgba(0,255,0,0.05)';
+                (e.currentTarget as HTMLElement).style.color = '#00ff00';
+                (e.currentTarget as HTMLElement).style.boxShadow = '0 0 8px rgba(0,255,0,0.15)';
+              }}
+            >
               ← DASHBOARD
             </Link>
 

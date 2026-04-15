@@ -19,9 +19,12 @@ export function Hero() {
     return () => clearInterval(timer)
   }, [])
 
-  const scrollToAbout = () => {
-    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
+
+  const scrollToAbout = () => scrollToSection('about')
 
   return (
     <section id="home" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
@@ -74,21 +77,23 @@ export function Hero() {
             transition={{ delay: 1 }}
             style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
           >
-            <a href="#contact"
+            <button
+              onClick={() => scrollToSection('contact')}
               className="neon-button"
-              style={{ padding: '0.75rem 2rem', border: '2px solid #00ff00', color: '#00ff00', background: 'transparent', cursor: 'pointer', transition: 'all 0.3s' }}
-              onMouseEnter={e => { e.target.style.background = '#00ff00'; e.target.style.color = '#000'; }}
-              onMouseLeave={e => { e.target.style.background = 'transparent'; e.target.style.color = '#00ff00'; }}
+              style={{ padding: '0.75rem 2rem', border: '2px solid #00ff00', color: '#00ff00', background: 'transparent', cursor: 'pointer', transition: 'all 0.3s', fontFamily: 'Orbitron, monospace' }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#00ff00'; e.currentTarget.style.color = '#000'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#00ff00'; }}
             >
               Get in Touch
-            </a>
-            <a href="#projects"
-              style={{ padding: '0.75rem 2rem', border: '2px solid #6b7280', color: '#d1d5db', background: 'transparent', cursor: 'pointer', transition: 'all 0.3s' }}
-              onMouseEnter={e => { e.target.style.borderColor = '#00ff00'; e.target.style.color = '#00ff00'; }}
-              onMouseLeave={e => { e.target.style.borderColor = '#6b7280'; e.target.style.color = '#d1d5db'; }}
+            </button>
+            <button
+              onClick={() => scrollToSection('projects')}
+              style={{ padding: '0.75rem 2rem', border: '2px solid #6b7280', color: '#d1d5db', background: 'transparent', cursor: 'pointer', transition: 'all 0.3s', fontFamily: 'Orbitron, monospace' }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = '#00ff00'; e.currentTarget.style.color = '#00ff00'; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = '#6b7280'; e.currentTarget.style.color = '#d1d5db'; }}
             >
               View Projects
-            </a>
+            </button>
           </motion.div>
         </motion.div>
 
@@ -107,7 +112,7 @@ export function Hero() {
               <img
                 src="/lance-hero.png"
                 alt="Lance Kelly P. Manlangit"
-                style={{ width: '280px', height: '350px', objectFit: 'cover', objectPosition: 'top', borderRadius: '6px', display: 'block' }}
+                style={{ width: '100%', maxWidth: '320px', height: 'auto', objectFit: 'contain', borderRadius: '6px', display: 'block' }}
               />
             </div>
             <motion.div
