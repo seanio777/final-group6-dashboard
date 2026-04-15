@@ -92,11 +92,8 @@ export function Navbar() {
           className="fixed top-16 left-0 right-0 bg-black/95 backdrop-blur-md border-b border-[#00ff00]/20 z-40 md:hidden"
         >
           <div className="container mx-auto px-4 py-4">
-            <Link
-              to="/"
-              className="block py-3 text-[#00ff00] hover:text-white transition-colors duration-300 font-mono text-sm border-b border-[#00ff00]/20 mb-2"
-            >
-              ← BACK TO DASHBOARD
+            <Link to="/" className="px-4 py-2 border border-[#00ff00]/30 text-[#00ff00] text-sm font-mono rounded hover:bg-[#00ff00]/10 hover:border-[#00ff00] hover:shadow-[0_0_15px_rgba(0,255,0,0.3)] transition-all duration-300">
+              ← DASHBOARD
             </Link>
             {navItems.map((item) => (
               <a
