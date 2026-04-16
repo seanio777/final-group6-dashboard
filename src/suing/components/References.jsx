@@ -6,16 +6,7 @@ const references = [
     institution: 'Technological Institute of the Philippines - Manila',
     email: 'jbeenriquez@tip.edu.ph',
     phone: '+63 XXX XXX XXXX',
-    photo: '',
-  },
-  {
-    name: 'Reference Name',
-    title: 'POSITION',
-    org: 'Title and Role',
-    institution: 'Organization/Institution Name',
-    email: 'email@example.com',
-    phone: '+63 XXX XXX XXXX',
-    photo: '',
+    photo: '/dr-jennifer-enriquez.jpg',
   },
 ]
 
@@ -28,14 +19,12 @@ export default function References() {
       <div className="references-grid">
         {references.map((ref, i) => (
           <article key={i} className="reference-card">
-            {ref.photo && (
-              <img
-                src={ref.photo}
-                alt={ref.name}
-                className="reference-photo"
-                onError={e => { e.target.style.display = 'none' }}
-              />
-            )}
+            <img
+              src={ref.photo}
+              alt={ref.name}
+              className="reference-photo"
+              onError={e => { e.target.style.display = 'none' }}
+            />
             <h3>{ref.name}</h3>
             <p className="reference-title">{ref.title}</p>
             <p className="reference-org">{ref.org}</p>

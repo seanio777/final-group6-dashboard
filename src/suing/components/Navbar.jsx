@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import useTheme from '../hooks/useTheme'
 import useTypewriter from '../hooks/useTypewriter'
@@ -14,19 +15,35 @@ const navLinks = [
 
 export default function Navbar() {
   const { isDark, toggleTheme } = useTheme()
+  const [isOpen, setIsOpen] = useState(false)
   useTypewriter()
 
+  const closeMenu = () => setIsOpen(false)
+
   return (
-    <nav>
-      {/* Back to dashboard */}
-      <Link to="/" className="logo" style={{ textDecoration: 'none' }}>
+    <nav className={isOpen ? 'nav-open' : ''}>
+      {/* Back to dashboard — replaces logo */}
+      <Link to="/" className="logo" style={{ textDecoration: 'none' }} onClick={closeMenu}>
         ← Dashboard
       </Link>
 
-      <ul>
+      {/* Mobile hamburger */}
+      <button
+        id="nav-toggle"
+        className={`nav-toggle${isOpen ? ' open' : ''}`}
+        aria-expanded={isOpen}
+        aria-label="Toggle navigation"
+        onClick={() => setIsOpen(prev => !prev)}
+      >
+        <span />
+        <span />
+        <span />
+      </button>
+
+      <ul className="nav-links">
         {navLinks.map(link => (
           <li key={link.label}>
-            <a href={link.href}>{link.label}</a>
+            <a href={link.href} onClick={closeMenu}>{link.label}</a>
           </li>
         ))}
       </ul>
