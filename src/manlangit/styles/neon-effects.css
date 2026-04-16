@@ -285,3 +285,14 @@
 .manlangit-root textarea::placeholder {
   color: #6b7280;
 }
+/* ── Responsive overrides for component-specific grids ── */
+@media (max-width: 900px) {
+  .manlangit-root .about-2col       { grid-template-columns: 1fr !important; }
+  .manlangit-root .skills-2col      { grid-template-columns: 1fr !important; }
+  .manlangit-root .projects-grid    { grid-template-columns: 1fr 1fr !important; }
+  .manlangit-root .achievements-grid { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width: 600px) {
+  .manlangit-root .projects-grid    { grid-template-columns: 1fr !important; }
+  .manlangit-root .achievements-grid { grid-template-columns: 1fr !important; }
+}
