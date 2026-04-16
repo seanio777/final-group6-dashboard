@@ -8,27 +8,24 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
+    { name: 'Home',         href: '#home' },
+    { name: 'About',        href: '#about' },
+    { name: 'Projects',     href: '#projects' },
     { name: 'Achievements', href: '#achievements' },
-    { name: 'Seminars', href: '#seminars' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Seminars',     href: '#seminars' },
+    { name: 'Skills',       href: '#skills' },
+    { name: 'Contact',      href: '#contact' },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     setIsMobileMenuOpen(false);
   };
 
@@ -42,29 +39,53 @@ export function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="container mx-auto px-4">
+        {/* FIX 8: increased left padding so Dashboard button isn't flush against edge */}
+        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2.5rem' }}>
           <div className="flex items-center justify-between h-16">
-            {/* ← Dashboard link */}
+
+            {/* FIX 8: DASHBOARD button styled to match portfolio aesthetic */}
             <Link
               to="/"
-              className="text-sm font-mono text-[#00ff00] hover:text-white transition-colors duration-300"
+              style={{
+                color: '#00ff00',
+                fontSize: '0.72rem',
+                fontFamily: 'Orbitron, monospace',
+                textDecoration: 'none',
+                whiteSpace: 'nowrap',
+                letterSpacing: '0.1em',
+                padding: '0.35rem 0.85rem',
+                border: '1px solid rgba(0,255,0,0.45)',
+                borderRadius: '4px',
+                textShadow: '0 0 8px rgba(0,255,0,0.7)',
+                boxShadow: '0 0 6px rgba(0,255,0,0.15)',
+                transition: 'all 0.3s',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.background = 'rgba(0,255,0,0.1)';
+                (e.currentTarget as HTMLElement).style.boxShadow = '0 0 14px rgba(0,255,0,0.5)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.background = 'transparent';
+                (e.currentTarget as HTMLElement).style.boxShadow = '0 0 6px rgba(0,255,0,0.15)';
+              }}
             >
               ← DASHBOARD
             </Link>
 
-            {/* Logo */}
-            <a href="#home" className="text-2xl neon-text">
+            {/* Logo — centered */}
+            <a href="#home" className="text-2xl neon-text" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
               &lt;Portfolio /&gt;
             </a>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            {/* Desktop nav */}
+            <div className="hidden md:flex items-center gap-6">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
                   className="text-gray-300 hover:text-[#00ff00] transition-colors duration-300 relative group"
+                  style={{ fontSize: '0.8rem', fontFamily: 'Orbitron, monospace' }}
                 >
                   {item.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#00ff00] transition-all duration-300 group-hover:w-full neon-glow" />
@@ -72,7 +93,7 @@ export function Navbar() {
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile toggle */}
             <button
               className="md:hidden text-[#00ff00]"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -92,8 +113,11 @@ export function Navbar() {
           className="fixed top-16 left-0 right-0 bg-black/95 backdrop-blur-md border-b border-[#00ff00]/20 z-40 md:hidden"
         >
           <div className="container mx-auto px-4 py-4">
-            <Link to="/" className="px-4 py-2 border border-[#00ff00]/30 text-[#00ff00] text-sm font-mono rounded hover:bg-[#00ff00]/10 hover:border-[#00ff00] hover:shadow-[0_0_15px_rgba(0,255,0,0.3)] transition-all duration-300">
-              ← DASHBOARD
+            <Link
+              to="/"
+              className="block py-3 text-[#00ff00] hover:text-white transition-colors duration-300 font-mono text-sm border-b border-[#00ff00]/20 mb-2"
+            >
+              ← BACK TO DASHBOARD
             </Link>
             {navItems.map((item) => (
               <a
